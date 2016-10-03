@@ -8,11 +8,11 @@
 			"version": "2.4.0-2016-9-28-1"
 		}
 	},
+	"scripts": {},
 	"dependencies": {
 		"@angular/core": "2.1.0-beta.0",
 		"@angular/common": "2.1.0-beta.0",
 		"@angular/compiler": "2.1.0-beta.0",
-		"@angular/compiler-cli": "2.1.0-beta.0",
 		"@angular/forms": "2.1.0-beta.0",
 		"@angular/http": "2.1.0-beta.0",
 		"@angular/platform-browser": "2.1.0-beta.0",
