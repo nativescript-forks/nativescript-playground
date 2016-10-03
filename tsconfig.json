@@ -1,16 +1,21 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "removeComments": true,
-        "sourceMap": false,
-        "pretty": true
-    },
-    "exclude": [
-        "node_modules",
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es5",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"removeComments": true,
+		"sourceMap": false,
+		"pretty": true
+	},
+	"exclude": [
+		"node_modules",
 		"src/node_modules",
-        "platforms"
-    ]
+		"platforms"
+	],
+	"angularCompilerOptions": {
+		"genDir": "./app",
+		"debug": true
+	}
 }
+

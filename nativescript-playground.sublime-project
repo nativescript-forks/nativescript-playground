@@ -28,8 +28,8 @@
 			"app/App_Resources",
 			"src",
 			"src/*",
-			"typings",
-			"typings/native",
+			// "typings",
+			// "typings/native",
 		]
 	}]
 }
