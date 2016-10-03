@@ -1,16 +1,18 @@
 <!--  -->
 
-<ActionBar title="Add Conversation">
-    <!-- <NavigationButton text="Back" android.systemIcon="ic_menu_back"></NavigationButton> -->
+<ActionBar title="Threads">
+    <NavigationButton text="Back" android.systemIcon="ic_menu_back" [nsRouterLink]="['/']" clearHistory="true"></NavigationButton>
 </ActionBar>
 
 
 
 <GridLayout rows="*">
-    <DockLayout row="0">
-        <Label dock="top" text="HAIII"></Label>
-        <Button dock="top" class="button button-balanced" text="Add Thread"></Button>
-    </DockLayout>
+
+    <StackLayout row="0">
+        <Button class="button-large" text="Index" [nsRouterLink]="['/']" clearHistory="true"></Button>
+        <Button class="button-large" text="Test Blocking UI"></Button>
+    </StackLayout>
+
 </GridLayout>
 
 

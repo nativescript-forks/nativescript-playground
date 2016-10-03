@@ -1,8 +1,8 @@
 // 
 
 import * as application from "application"
-import {Component, OnInit} from "@angular/core"
-import {RouterExtensions} from "nativescript-angular/router"
+import { Component, OnInit } from "@angular/core"
+import { RouterExtensions } from "nativescript-angular/router"
 
 
 
@@ -14,9 +14,10 @@ import {RouterExtensions} from "nativescript-angular/router"
 export class AppComponent implements OnInit {
 
 	constructor(
-		
+
 	) {
-		global.tnsconsole.info('AppComponent > constructor >')
+		global.tnsconsole.info('AppComponent > constructor')
+		console.timeEnd('bootstrapModule')
 	}
 
 	ngOnInit() {

@@ -1,6 +1,6 @@
 <!--  -->
 
-<ActionBar title="Live Whispers">
+<ActionBar title="Index">
 
 </ActionBar>
 
@@ -8,13 +8,10 @@
 
 <GridLayout rows="*">
 
-    <ScrollView row="0">
-        <StackLayout>
-            <Button class="button-large" text="Threads" (tap)="threads()"></Button>
-            <Button class="button-large" text="Threads" [nsRouterLink]="['/threads']"></Button>
-            <Button class="button-large" text="Pin Entry" (tap)="gopin()"></Button>
-        </StackLayout>
-    </ScrollView>
+    <StackLayout row="0">
+        <Button class="button-large" text="Threads" [nsRouterLink]="['/threads']"></Button>
+        <Button class="button-large" text="Test Blocking UI"></Button>
+    </StackLayout>
 
 </GridLayout>
 

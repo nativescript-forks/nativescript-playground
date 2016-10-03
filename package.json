@@ -9,14 +9,16 @@
 		}
 	},
 	"dependencies": {
-		"@angular/core": "2.0.1",
-		"@angular/common": "2.0.1",
-		"@angular/compiler": "2.0.1",
-		"@angular/forms": "2.0.1",
-		"@angular/platform-browser": "2.0.1",
-		"@angular/platform-browser-dynamic": "2.0.1",
-		"@angular/platform-server": "2.0.1",
-		"@angular/router": "3.0.1",
+		"@angular/core": "2.1.0-beta.0",
+		"@angular/common": "2.1.0-beta.0",
+		"@angular/compiler": "2.1.0-beta.0",
+		"@angular/compiler-cli": "2.1.0-beta.0",
+		"@angular/forms": "2.1.0-beta.0",
+		"@angular/http": "2.1.0-beta.0",
+		"@angular/platform-browser": "2.1.0-beta.0",
+		"@angular/platform-browser-dynamic": "2.1.0-beta.0",
+		"@angular/platform-server": "2.1.0-beta.0",
+		"@angular/router": "3.1.0-beta.0",
 		"ansicolors": "latest",
 		"ansistyles": "latest",
 		"bluebird": "latest",
@@ -24,7 +26,6 @@
 		"lodash": "latest",
 		"moment": "latest",
 		"nativescript-angular": "latest",
-		"reflect-metadata": "latest",
 		"tns-core-modules": "latest"
 	},
 	"devDependencies": {
