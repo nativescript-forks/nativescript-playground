@@ -8,27 +8,24 @@ import { ThreadsComponent } from "./routes/threads/threads.component"
 
  
 
-export let routeComponents: Array<any> = [
-	IndexComponent,
-	ThreadsComponent,
-]
+export let routeComponents: Array<any> = []
 
 export const routes: Routes = [
-	{
+	route({
 		path: "",
 		component: IndexComponent,
-	},
-	{
+	}),
+	route({
 		path: "threads",
 		component: ThreadsComponent,
-	},
+	}),
 ]
 
 
 
-// function route(component: Route) {
-// 	routeComponents.push(component.component)
-// 	return component
-// }
+function route(component: Route) {
+	routeComponents.push(component.component)
+	return component
+}
 
 
