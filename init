@@ -14,6 +14,8 @@ npm link gulp-typescript \
 && \
 npm install \
 && \
+rm -Rf ../hooks \
+&& \
 # && \
 # gulp init
 printf '\n\n\n/*===================================' && \

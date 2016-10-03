@@ -39,6 +39,23 @@ gulp.task('watch:xml', () => {
 
 
 
+/*=====  HTML  ======*/
+gulp.task('apply:html', () => {
+	return merge(gulp.src([
+		'./**/*.html',
+		'!./node_modules/**/*'
+	]).pipe(gulp.dest('../app')))
+})
+
+gulp.task('watch:html', () => {
+	return gulp.watch([
+		'./**/*.html',
+		'!./node_modules/**/*'
+	], ['apply:html'])
+})
+
+
+
 /*=====  CSS  ======*/
 gulp.task('apply:css', () => {
 	return merge(gulp.src([
@@ -56,7 +73,7 @@ gulp.task('watch:css', () => {
 
 
 
-gulp.task('default', ['apply:tsc', 'apply:css', 'apply:xml', 'watch:css', 'watch:xml'], function () {
+gulp.task('default', ['apply:tsc', 'apply:css', 'apply:xml', 'apply:html', 'watch:css', 'watch:xml', 'watch:html'], function () {
 	gulp.watch([
 		'./**/*.ts',
 		'!./node_modules/**/*'
