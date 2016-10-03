@@ -13,11 +13,9 @@
 		"ansistyles": "latest",
 		"bluebird": "latest",
 		"eventemitter3": "latest",
-		"events": "latest",
 		"lodash": "latest",
 		"moment": "latest",
-		"tns-core-modules": "2.3.0",
-		"url": "latest"
+		"tns-core-modules": "latest"
 	},
 	"devDependencies": {
 		"babel-traverse": "6.15.0",

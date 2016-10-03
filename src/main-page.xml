@@ -3,7 +3,7 @@
 <Page loaded="onLoaded">
 
     <Page.actionBar>
-        <ActionBar title="Plugin Dev">
+        <ActionBar title="Playground">
         </ActionBar>
     </Page.actionBar>
 
@@ -12,21 +12,7 @@
         <DockLayout row="0">
             <StackLayout dock="top">
                 <Button class="button-large" text="Do It" tap="{{ doit }}" />
-                <Button class="button-large" text="Pick Contact" tap="{{ pickContact }}" />
             </StackLayout>
-
-            <ListView items="{{ items }}">
-                <ListView.itemTemplate>
-                    <GridLayout rows="auto" columns="auto,*" class="convos-list-wrapper">
-                        <Image row="0" col="0" imageSource="{{ photo }}" />
-                        <StackLayout row="0" col="1" orientation="vertical">
-                            <Label class="t-large" text="{{ display_name }}" />
-                            <Label text="{{ address }}" />
-                            <Label text="{{ date }}" />
-                        </StackLayout>
-                    </GridLayout>
-                </ListView.itemTemplate>
-            </ListView>
         </DockLayout>
 
     </GridLayout>

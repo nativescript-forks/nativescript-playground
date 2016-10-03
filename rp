@@ -1,7 +1,3 @@
 #!/bin/bash
 
-tns plugin remove nativescript-threads \
-&& \
-tns plugin add file:threads \
-&& \
 tns livesync android --watch
