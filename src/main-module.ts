@@ -1,30 +1,20 @@
 ﻿// 
 
 import { Component, NgModule, ApplicationRef } from "@angular/core"
-import { NativeScriptModule } from "nativescript-angular/platform"
-import { NativeScriptRouterModule } from "nativescript-angular/router"
-import { registerElement } from "nativescript-angular/element-registry"
-import { routes, routeComponents } from "./routes"
-import { AppComponent } from "./routes/app/app.component"
+import { BrowserModule } from "@angular/platform-browser"
+import { AppComponent } from "./app.component"
 
 
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		...routeComponents,
-	],
-	bootstrap: [
-		AppComponent,
 	],
 	imports: [
-		NativeScriptModule,
-		NativeScriptRouterModule,
-		NativeScriptRouterModule.forRoot(routes),
+		BrowserModule,
 	],
 	entryComponents: [
 		AppComponent,
-		...routeComponents,
 	]
 })
 
