@@ -1,0 +1,21 @@
+#!/bin/bash
+
+npm install \
+&& \
+tns install \
+&& \
+cd src \
+&& \
+npm link typescript \
+&& \
+npm link gulp \
+&& \
+npm link gulp-typescript \
+&& \
+npm install \
+&& \
+# && \
+# gulp init
+printf '\n\n\n/*===================================' && \
+printf '\n=            Init > DONE            =' && \
+printf '\n===================================*/\n\n\n\n'

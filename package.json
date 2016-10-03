@@ -1,0 +1,30 @@
+{
+	"nativescript": {
+		"id": "com.roblav96.playground",
+		"tns-android": {
+			"version": "2.4.0-next-2016-09-29-1186"
+		},
+		"tns-ios": {
+			"version": "2.4.0-2016-9-28-1"
+		}
+	},
+	"dependencies": {
+		"ansicolors": "latest",
+		"ansistyles": "latest",
+		"bluebird": "latest",
+		"eventemitter3": "latest",
+		"events": "latest",
+		"lodash": "latest",
+		"moment": "latest",
+		"tns-core-modules": "2.3.0",
+		"url": "latest"
+	},
+	"devDependencies": {
+		"babel-traverse": "6.15.0",
+		"babel-types": "6.15.0",
+		"babylon": "6.11.2",
+		"lazy": "1.0.11",
+		"zone.js": "^0.6.21"
+	}
+}
+

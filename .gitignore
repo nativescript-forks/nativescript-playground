@@ -1,0 +1,10 @@
+*.DS_STORE
+app/**/*.css
+app/**/*.xml
+app/**/*.js
+app/**/*.map
+hooks/
+lib/
+platforms/
+node_modules/
+src/node_modules/
