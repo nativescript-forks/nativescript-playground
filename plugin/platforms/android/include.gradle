@@ -1,0 +1,14 @@
+// 
+
+dependencies {
+	
+}
+
+android {
+	productFlavors {
+		"nativescriptplaygroundplugin" {
+			dimension "nativescriptplaygroundplugin"
+		}
+	}
+}
+
