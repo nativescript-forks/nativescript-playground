@@ -16,9 +16,9 @@ export class MyObservable extends Observable {
 
 		this.addEventListener(Observable.propertyChangeEvent, function(args: PropertyChangeData) {
 			global.tnsconsole.log('MyObservable > args.eventName', args.eventName)
-			global.tnsconsole.log('args.propertyName', args.propertyName)
-			global.tnsconsole.log('args.value', args.value)
-			if (args.propertyName || args.value) {
+			if (args.eventName) {
+				global.tnsconsole.log('args.propertyName', args.propertyName)
+				global.tnsconsole.log('args.value', args.value)
 				this.notify({
 					eventName: Observable.propertyChangeEvent,
 					object: this,
@@ -33,7 +33,6 @@ export class MyObservable extends Observable {
 		for (i = 0; i < len; i++) {
 			let key: ObservableArray<any> = this[keys[i]]
 			if (key.typeName == "ObservableArray") {
-				global.tnsconsole.dump('key', key)
 				key.addEventListener(ObservableArray.changeEvent, (args: ChangedData<any>) => {
 					this.notify({
 						eventName: Observable.propertyChangeEvent,
@@ -57,6 +56,8 @@ export class MyObservable extends Observable {
 
 }
 
+
+
 export class MyObservableArray<T> extends ObservableArray<T> {
 
 	constructor(args: Array<T>) {
@@ -65,6 +66,29 @@ export class MyObservableArray<T> extends ObservableArray<T> {
 
 	valueOf(): Array<T> {
 		return this["_array"]
+	}
+
+	findIndex(prop: string, value: any): number {
+		let array: Array<T> = this.valueOf()
+		let index: number = -1
+		let i: number, len: number = array.length
+		for (i = 0; i < len; i++) {
+			let item: any = this.getItem(i)
+			if (item[prop] == value) {
+				index = i
+				break
+			}
+		}
+		return index
+	}
+
+	spliceWhere(prop: string, value: any): boolean {
+		let index: number = this.findIndex(prop, value)
+		let sendi: boolean = index != -1
+		if (sendi) {
+			this.splice(index, 1)
+		}
+		return sendi
 	}
 
 }

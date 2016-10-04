@@ -87,7 +87,7 @@ class MainPage extends MyObservable {
 		if (picked == true) {
 			this.picked.push(item)
 		}
-		global.tnsconsole.dump('this.picked.valueOf()', this.picked.valueOf())
+		// global.tnsconsole.dump('this.picked.valueOf()', this.picked.valueOf())
 
 
 		let page: Page = (<any>args.object).page
@@ -97,10 +97,18 @@ class MainPage extends MyObservable {
 	}
 
 	onPickedTap(args: EventData) {
-		// let chip: StackLayout = (<any>args.object)
-		// global.tnsconsole.log('chip.id', chip.id)
-		// global.tnsconsole.log('chip.id', chip.id)
-		// let dis: PickContacts = chip.page.bindingContext
+		let chip: StackLayout = (<any>args.object)
+		let dis: MainPage = chip.page.bindingContext
+		let xid: string = chip.id
+
+		dis.picked.spliceWhere('xid', xid)
+		let index: number = dis.items.findIndex('xid', xid)
+		if (index != -1) {
+			let item: any = dis.items.getItem(index)
+			item.picked = false
+			dis.items.setItem(index, item)
+		}
+
 
 		// let index: number = -1
 		// let xid: string = chip.id
@@ -124,8 +132,6 @@ class MainPage extends MyObservable {
 	}
 
 }
-
-
 
 
 

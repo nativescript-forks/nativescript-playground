@@ -20,7 +20,7 @@
                                 <WrapLayout />
                             </Repeater.itemsLayout>
                             <Repeater.itemTemplate>
-                                <StackLayout id="{{ xid }}" class="chip" orientation="horizontal" tap="{{ $parent.onPickedTap }}">
+                                <StackLayout id="{{ xid }}" class="chip" tap="{{ $parents['Page'].onPickedTap }}" orientation="horizontal">
                                     <Image src="res://icon" />
                                     <Label text="{{ name }}" verticalAlignment="center" />
                                 </StackLayout>
