@@ -15,6 +15,7 @@
 		"eventemitter3": "latest",
 		"lodash": "latest",
 		"moment": "latest",
+		"nativescript-playground-plugin": "file:plugin",
 		"tns-core-modules": "latest"
 	},
 	"devDependencies": {
