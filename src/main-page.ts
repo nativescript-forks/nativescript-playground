@@ -89,7 +89,6 @@ class MainPage extends MyObservable {
 		}
 		// global.tnsconsole.dump('this.picked.valueOf()', this.picked.valueOf())
 
-
 		let page: Page = (<any>args.object).page
 		let scroll: ScrollView = page.getViewById<ScrollView>("picked_scroll")
 		let bottom: number = scroll.scrollableHeight
