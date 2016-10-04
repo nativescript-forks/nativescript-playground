@@ -18,11 +18,12 @@
 		"tns-core-modules": "latest"
 	},
 	"devDependencies": {
-		"babel-traverse": "6.15.0",
-		"babel-types": "6.15.0",
-		"babylon": "6.11.2",
-		"lazy": "1.0.11",
-		"zone.js": "^0.6.21"
+		"tns-platform-declarations": "latest",
+		"babel-traverse": "latest",
+		"babel-types": "latest",
+		"babylon": "latest",
+		"lazy": "latest",
+		"zone.js": "latest"
 	}
 }
 

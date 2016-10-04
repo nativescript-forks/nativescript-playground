@@ -1,6 +1,6 @@
 // 
 
-import {isArray, isUndefined, isNull} from "lodash"
+import { isArray, isUndefined, isNull } from "lodash"
 import * as application from "application"
 import * as moment from "moment"
 var colors = require("ansicolors")
@@ -149,6 +149,8 @@ global.tnsconsole = {
 				console.error(errs[i])
 				console.dump(errs[i])
 				this.dumpit('ERROR', errs[i])
+				let stack: string = (<any>(new Error())).stack.toString()
+				console.error(stack)
 				if (errs[i].description) {
 					console.error(errs[i].description)
 				}
@@ -170,11 +172,11 @@ global.tnsconsole = {
 		} else {
 			stack = 'IDK...'
 		}
-        let ia: number = stack.indexOf('/data/')
-        let ib: number = stack.indexOf('/app/')
-        let a: string = stack.substring(0, ia)
-        let b: string = stack.substring(ib + 4, stack.length)
-        return t + a + b
+		let ia: number = stack.indexOf('/data/')
+		let ib: number = stack.indexOf('/app/')
+		let a: string = stack.substring(0, ia)
+		let b: string = stack.substring(ib + 4, stack.length)
+		return t + a + b
 	},
 
 	'log': function log(...args: any[]) {
