@@ -1,18 +1,46 @@
 <!--  -->
 
-<Page loaded="onLoaded">
+<Page loaded="onLoaded" navigatedTo="{{ onNavigatedTo }}">
 
     <Page.actionBar>
         <ActionBar title="Playground">
+            <ActionItem visibility="{{ ready ? 'visible' : 'collapse' }}" tap="{{ onDone }}" ios.systemIcon="0" ios.position="right"
+                android.systemIcon="ic_menu_save" android.position="actionBar" />
         </ActionBar>
     </Page.actionBar>
 
     <GridLayout rows="*">
 
         <DockLayout row="0">
-            <StackLayout dock="top">
-                <Button class="button-large" text="Do It" tap="{{ doit }}" />
+            <StackLayout class="main-item" dock="top">
+                <GridLayout rows="auto" columns="*" class="item-list-wrapper">
+                    <ScrollView row="0" col="0" id="picked_scroll" style.height="50">
+                        <Repeater items="{{ picked }}">
+                            <Repeater.itemsLayout>
+                                <WrapLayout />
+                            </Repeater.itemsLayout>
+                            <Repeater.itemTemplate>
+                                <StackLayout id="{{ xid }}" class="chip" orientation="horizontal" tap="{{ $parent.onPickedTap }}">
+                                    <Image src="res://icon" />
+                                    <Label text="{{ name }}" verticalAlignment="center" />
+                                </StackLayout>
+                            </Repeater.itemTemplate>
+                        </Repeater>
+                    </ScrollView>
+                </GridLayout>
             </StackLayout>
+
+            <ListView items="{{ items }}" itemTap="{{ onItemTap }}">
+                <ListView.itemTemplate>
+                    <GridLayout rows="auto" columns="*,auto" class="item-list-wrapper">
+                        <StackLayout row="0" col="0" orientation="vertical" verticalAlignment="center">
+                            <Label class="h4" text="{{ name }}" />
+                        </StackLayout>
+                        <Image class="checkbox" row="0" col="1" src="{{ picked ? 'res://checkbox_on' : 'res://checkbox_off' }}"
+                        />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
         </DockLayout>
 
     </GridLayout>

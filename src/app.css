@@ -1,5 +1,70 @@
 ﻿/**/
 
+Page Label {
+    color: #5E646D;
+}
+
+Page .item-list-wrapper {
+    padding: 15 15;
+}
+
+Page .item-list-wrapper > Image {
+    height: 64;
+    width: 64;
+    margin-right: 15;
+}
+
+Page Image.checkbox {
+    height: 20;
+    width: 20;
+    margin-right: 10;
+}
+
+.main-item {
+    border-width: 5;
+    border-color: #3FB8AF;
+}
+
+Page .item-list-wrapper {
+    padding: 10 15;
+}
+
+Page .item-list-wrapper > Image {
+    height: 48;
+    width: 48;
+    margin-right: 15;
+}
+
+Page Image.checkbox {
+    height: 20;
+    width: 20;
+    margin-left: 15;
+    margin-right: 10;
+}
+
+#picked_scroll {
+    margin-top: 5;
+}
+
+.chip {
+    border-radius: 12;
+    background-color: #EEEFF0;
+    margin-right: 5;
+    margin-bottom: 5;
+    border-color: #CED0D3;
+    border-width: 1;
+}
+
+.chip > Image {
+    width: 24;
+    height: 24;
+}
+
+.chip > Label {
+    margin-right: 10;
+    margin-left: 5;
+}
+
 button {
     font-size: 30;
     horizontal-align: center;
