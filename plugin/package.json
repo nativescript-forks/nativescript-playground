@@ -1,0 +1,12 @@
+{
+	"name": "nativescript-playground-plugin",
+	"version": "1.0.0",
+	"main": "plugin.js",
+	"nativescript": {
+		"platforms": {
+			"android": "2.0.0",
+			"ios": "2.0.0"
+		}
+	}
+}
+
