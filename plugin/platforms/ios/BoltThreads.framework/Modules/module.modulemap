@@ -1,0 +1,10 @@
+framework module BoltThreads {
+  umbrella header "BoltThreads.h"
+
+  export *
+  module * { export * }
+}
+
+module BoltThreads.Swift {
+    header "BoltThreads-Swift.h"
+}
