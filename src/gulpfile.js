@@ -4,6 +4,7 @@
 var gulp = require('gulp')
 var ts = require('gulp-typescript')
 var merge = require('merge2')
+var del = require('del')
 
 
 
@@ -56,7 +57,18 @@ gulp.task('watch:css', () => {
 
 
 
-gulp.task('default', ['apply:tsc', 'apply:css', 'apply:xml', 'watch:css', 'watch:xml'], function () {
+/*=====  JS  ======*/
+gulp.task('apply:js', () => {
+	del([
+		'./**/*.js',
+		'!./node_modules/**/*',
+		'!./gulpfile.js'
+	])
+})
+
+
+
+gulp.task('default', ['apply:tsc', 'apply:js', 'apply:css', 'apply:xml', 'watch:css', 'watch:xml'], function () {
 	gulp.watch([
 		'./**/*.ts',
 		'!./node_modules/**/*'
