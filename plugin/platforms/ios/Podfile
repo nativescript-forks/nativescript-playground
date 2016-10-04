@@ -1,3 +1,4 @@
 # 
 
-pod 'FMDB'
+# pod 'FMDB'
+pod 'FMDB/standalone'

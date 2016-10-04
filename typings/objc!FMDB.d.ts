@@ -21,6 +21,10 @@ declare class FMDatabase extends NSObject {
 
 	static new(): FMDatabase; // inherited from NSObject
 
+	static registerTokenizer(tokenizer: FMTokenizerDelegate): void;
+
+	static registerTokenizerWithKey(tokenizer: FMTokenizerDelegate, key: string): void;
+
 	static sqliteLibVersion(): string;
 
 	static storeableDateFormat(format: string): NSDateFormatter;
@@ -94,6 +98,12 @@ declare class FMDatabase extends NSObject {
 	inTransaction(): boolean;
 
 	initWithPath(inPath: string): this;
+
+	installTokenizerModule(): boolean;
+
+	installTokenizerModuleWithName(name: string): boolean;
+
+	issueCommandForTable(command: string, tableName: string): boolean;
 
 	lastError(): NSError;
 
@@ -313,6 +323,8 @@ declare class FMResultSet extends NSObject {
 
 	objectForKeyedSubscript(columnName: string): any;
 
+	offsetsForColumnIndex(columnIdx: number): FMTextOffsets;
+
 	resultDict(): NSDictionary<any, any>;
 
 	resultDictionary(): NSDictionary<any, any>;
@@ -326,6 +338,23 @@ declare class FMResultSet extends NSObject {
 	unsignedLongLongIntForColumn(columnName: string): number;
 
 	unsignedLongLongIntForColumnIndex(columnIdx: number): number;
+}
+
+declare class FMSimpleTokenizer extends NSObject implements FMTokenizerDelegate {
+
+	static alloc(): FMSimpleTokenizer; // inherited from NSObject
+
+	static new(): FMSimpleTokenizer; // inherited from NSObject
+
+	constructor(o: { locale: NSLocale; });
+
+	closeTokenizerCursor(cursor: interop.Pointer | interop.Reference<FMTokenizerCursor>): void;
+
+	initWithLocale(locale: NSLocale): this;
+
+	nextTokenForCursor(cursor: interop.Pointer | interop.Reference<FMTokenizerCursor>): boolean;
+
+	openTokenizerCursor(cursor: interop.Pointer | interop.Reference<FMTokenizerCursor>): void;
 }
 
 declare class FMStatement extends NSObject {
@@ -346,3 +375,96 @@ declare class FMStatement extends NSObject {
 
 	reset(): void;
 }
+
+declare class FMStopWordTokenizer extends NSObject implements FMTokenizerDelegate {
+
+	static alloc(): FMStopWordTokenizer; // inherited from NSObject
+
+	static new(): FMStopWordTokenizer; // inherited from NSObject
+
+	static tokenizerWithFileURLBaseTokenizerError(wordFileURL: NSURL, tokenizer: FMTokenizerDelegate): FMStopWordTokenizer;
+
+	words: NSSet<any>;
+
+	constructor(o: { words: NSSet<any>; baseTokenizer: FMTokenizerDelegate; });
+
+	closeTokenizerCursor(cursor: interop.Pointer | interop.Reference<FMTokenizerCursor>): void;
+
+	initWithWordsBaseTokenizer(words: NSSet<any>, tokenizer: FMTokenizerDelegate): this;
+
+	nextTokenForCursor(cursor: interop.Pointer | interop.Reference<FMTokenizerCursor>): boolean;
+
+	openTokenizerCursor(cursor: interop.Pointer | interop.Reference<FMTokenizerCursor>): void;
+}
+
+declare class FMTextOffsets extends NSObject {
+
+	static alloc(): FMTextOffsets; // inherited from NSObject
+
+	static new(): FMTextOffsets; // inherited from NSObject
+
+	constructor(o: { DBOffsets: string; });
+
+	enumerateWithBlock(block: (p1: number, p2: number, p3: NSRange) => void): void;
+
+	initWithDBOffsets(offsets: string): this;
+}
+
+interface FMTokenizerCursor {
+	tokenizer: interop.Pointer | interop.Reference<any>;
+	inputString: string;
+	currentRange: CFRange;
+	tokenString: string;
+	userObject: any;
+	tokenIndex: number;
+	outputBuf: interop.Reference<number>;
+}
+declare var FMTokenizerCursor: interop.StructType<FMTokenizerCursor>;
+
+interface FMTokenizerDelegate {
+
+	closeTokenizerCursor(cursor: interop.Pointer | interop.Reference<FMTokenizerCursor>): void;
+
+	nextTokenForCursor(cursor: interop.Pointer | interop.Reference<FMTokenizerCursor>): boolean;
+
+	openTokenizerCursor(cursor: interop.Pointer | interop.Reference<FMTokenizerCursor>): void;
+}
+declare var FMTokenizerDelegate: {
+
+	prototype: FMTokenizerDelegate;
+};
+
+declare function fts3_global_term_cnt(iTerm: number, iCol: number): number;
+
+declare function fts3_term_cnt(iTerm: number, iCol: number): number;
+
+declare var kFTSCommandAutoMerge: string;
+
+declare var kFTSCommandIntegrityCheck: string;
+
+declare var kFTSCommandMerge: string;
+
+declare var kFTSCommandOptimize: string;
+
+declare var kFTSCommandRebuild: string;
+
+interface sqlite3_tokenizer {
+	pModule: interop.Pointer | interop.Reference<sqlite3_tokenizer_module>;
+}
+declare var sqlite3_tokenizer: interop.StructType<sqlite3_tokenizer>;
+
+interface sqlite3_tokenizer_cursor {
+	pTokenizer: interop.Pointer | interop.Reference<sqlite3_tokenizer>;
+}
+declare var sqlite3_tokenizer_cursor: interop.StructType<sqlite3_tokenizer_cursor>;
+
+interface sqlite3_tokenizer_module {
+	iVersion: number;
+	xCreate: interop.FunctionReference<(p1: number, p2: interop.Pointer | interop.Reference<string>, p3: interop.Pointer | interop.Reference<interop.Pointer | interop.Reference<sqlite3_tokenizer>>) => number>;
+	xDestroy: interop.FunctionReference<(p1: interop.Pointer | interop.Reference<sqlite3_tokenizer>) => number>;
+	xOpen: interop.FunctionReference<(p1: interop.Pointer | interop.Reference<sqlite3_tokenizer>, p2: string, p3: number, p4: interop.Pointer | interop.Reference<interop.Pointer | interop.Reference<sqlite3_tokenizer_cursor>>) => number>;
+	xClose: interop.FunctionReference<(p1: interop.Pointer | interop.Reference<sqlite3_tokenizer_cursor>) => number>;
+	xNext: interop.FunctionReference<(p1: interop.Pointer | interop.Reference<sqlite3_tokenizer_cursor>, p2: interop.Pointer | interop.Reference<string>, p3: interop.Pointer | interop.Reference<number>, p4: interop.Pointer | interop.Reference<number>, p5: interop.Pointer | interop.Reference<number>, p6: interop.Pointer | interop.Reference<number>) => number>;
+	xLanguageid: interop.FunctionReference<(p1: interop.Pointer | interop.Reference<sqlite3_tokenizer_cursor>, p2: number) => number>;
+}
+declare var sqlite3_tokenizer_module: interop.StructType<sqlite3_tokenizer_module>;
