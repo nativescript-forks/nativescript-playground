@@ -9,12 +9,12 @@ import { topmost } from "ui/frame"
 
 export function onLoaded(args: EventData) {
 	let page: Page = <Page>args.object
-	page.bindingContext = new MainPage(
+	page.bindingContext = new Other(
 
 	)
 }
 
-class MainPage extends Observable {
+class Other extends Observable {
 
 	constructor(
 
@@ -23,9 +23,7 @@ class MainPage extends Observable {
 	}
 
 	doit(args: EventData) {
-		topmost().navigate({
-			moduleName: 'routes/other'
-		})
+		topmost().goBack()
 	}
 
 }
