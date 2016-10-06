@@ -47,10 +47,17 @@ export class Database {
 							for (ii = 0; ii < lenn; ii++) {
 								keys.addObject(query.params[ii])
 							}
-							results.push(db.executeQueryValuesError(query.query, keys))
+							// global.tnsconsole.log('query.query', query.query)
+							// global.tnsconsole.log('keys', keys)
+							// results.push(db.executeQueryValuesError(query.query, keys))
 						} else {
 							results.push(db.executeUpdateValuesError(query.query, keys))
 						}
+						
+						results.push(query.query)
+						
+						// global.tnsconsole.log('query.query', query.query)
+						// global.tnsconsole.log('keys', keys)
 
 					}
 				})

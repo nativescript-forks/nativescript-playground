@@ -3,7 +3,7 @@
 // Definitions by: Chris Bowdon <https://github.com/cbowdon/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-declare namespace Chance {
+declare module "chance" {
 
     interface ChanceStatic {
         (): Chance
@@ -220,11 +220,11 @@ declare var chance: Chance.Chance;
 declare var Chance: Chance.ChanceStatic;
 
 // import Chance = require('chance');
-declare module 'chance' {
-    interface ExportedChance extends Chance.ChanceStatic {
-        Chance: ExportedChance;
-    }
-    var Chance: ExportedChance;
+// declare module 'chance' {
+//     interface ExportedChance extends Chance.ChanceStatic {
+//         Chance: ExportedChance;
+//     }
+//     var Chance: ExportedChance;
 
-    export = Chance;
-}
+//     export = Chance;
+// }
