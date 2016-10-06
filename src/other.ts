@@ -23,9 +23,7 @@ class MainPage extends Observable {
 	}
 
 	doit(args: EventData) {
-		topmost().navigate({
-			moduleName: 'other',
-		})
+		topmost().goBack()
 	}
 
 }

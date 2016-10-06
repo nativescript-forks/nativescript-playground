@@ -3,7 +3,7 @@
 <Page loaded="onLoaded">
 
     <Page.actionBar>
-        <ActionBar title="Playground">
+        <ActionBar title="Other">
         </ActionBar>
     </Page.actionBar>
 
@@ -11,7 +11,7 @@
 
         <DockLayout row="0">
             <StackLayout dock="top">
-                <Button class="button-large" text="Do It" tap="{{ doit }}" />
+                <Button class="button-large" text="Go Back" tap="{{ doit }}" />
                 <Button class="button-large" text="Test It" />
             </StackLayout>
         </DockLayout>
