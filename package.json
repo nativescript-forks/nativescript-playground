@@ -2,10 +2,10 @@
 	"nativescript": {
 		"id": "com.roblav96.playground",
 		"tns-android": {
-			"version": "next"
+			"version": "2.4.0-next-2016-10-05-1205"
 		},
 		"tns-ios": {
-			"version": "next"
+			"version": "2.4.0-2016-9-28-1"
 		}
 	},
 	"dependencies": {
@@ -16,7 +16,8 @@
 		"lodash": "latest",
 		"moment": "latest",
 		"nativescript-playground-plugin": "file:plugin",
-		"tns-core-modules": "next"
+		"nativescript-theme-core": "latest",
+		"tns-core-modules": "latest"
 	},
 	"devDependencies": {
 		"tns-platform-declarations": "next",
