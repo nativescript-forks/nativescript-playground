@@ -7,8 +7,8 @@
 6 silly lifecycle @~preb: no script for preb, continuing
 7 info lifecycle @~b: @
 8 verbose lifecycle @~b: unsafe-perm in lifecycle true
-9 verbose lifecycle @~b: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/roblav96/Projects/nativescript-playground/node_modules/.bin:/usr/local/bin:/Users/roblav96/Library/Android/android-ndk:/usr/local/opt/llvm/bin:/Users/roblav96/Library/Android/tools:/Users/roblav96/Library/Android/build-tools/24.0.0:/Users/roblav96/Library/Android/platform-tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-10 verbose lifecycle @~b: CWD: /Users/roblav96/Projects/nativescript-playground
+9 verbose lifecycle @~b: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Volumes/OSX HD/Projects/nativescript-playground/node_modules/.bin:/usr/local/bin:/usr/local/opt/llvm/bin:/Users/roblav96/Library/Android/build-tools/24.0.1:/Users/roblav96/Library/Android/platform-tools:/Users/roblav96/Library/Android/tools:/usr/local/bin:/usr/local/opt/llvm/bin:/Users/roblav96/Library/Android/build-tools/24.0.1:/Users/roblav96/Library/Android/platform-tools:/Users/roblav96/Library/Android/tools:/usr/local/bin:/usr/local/opt/llvm/bin:/Users/roblav96/Library/Android/build-tools/24.0.1:/Users/roblav96/Library/Android/platform-tools:/Users/roblav96/Library/Android/tools:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+10 verbose lifecycle @~b: CWD: /Volumes/OSX HD/Projects/nativescript-playground
 11 silly lifecycle @~b: Args: [ '-c', 'browserify -s main web/main.js > web/bundle.js' ]
 12 silly lifecycle @~b: Returned: code: 1  signal: null
 13 info lifecycle @~b: Failed to exec b script
@@ -23,8 +23,8 @@
 14 verbose stack     at maybeClose (internal/child_process.js:877:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid @
-16 verbose cwd /Users/roblav96/Projects/nativescript-playground
-17 error Darwin 15.6.0
+16 verbose cwd /Volumes/OSX HD/Projects/nativescript-playground
+17 error Darwin 15.5.0
 18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "b"
 19 error node v6.5.0
 20 error npm  v3.10.3

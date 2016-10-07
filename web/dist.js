@@ -7,19 +7,3 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from "@angular/core";
-export var ThreadsComponent = (function () {
-    function ThreadsComponent() {
-        global.tnsconsole.log('ThreadsComponent > constructor');
-    }
-    ThreadsComponent.prototype.ngOnInit = function () {
-    };
-    ThreadsComponent = __decorate([
-        Component({
-            styleUrls: ["routes/threads/threads.styles.css"],
-            templateUrl: "routes/threads/threads.template.html",
-        }), 
-        __metadata('design:paramtypes', [])
-    ], ThreadsComponent);
-    return ThreadsComponent;
-}());

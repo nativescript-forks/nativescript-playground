@@ -1,6 +1,5 @@
 ﻿// 
 
-import "./dev/tns.console"
 import "reflect-metadata"
 import { NgModule, enableProdMode } from "@angular/core"
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic"

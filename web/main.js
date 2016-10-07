@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,44 +7,43 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-require("./dev/tns.console");
-require("reflect-metadata");
-var core_1 = require("@angular/core");
-var platform_browser_dynamic_1 = require("@angular/platform-browser-dynamic");
-var platform_1 = require("nativescript-angular/platform");
-var router_1 = require("nativescript-angular/router");
-var routes_1 = require("./routes");
-var app_component_1 = require("./routes/app/app.component");
-var utils_1 = require("./magic/utils");
-core_1.enableProdMode();
+import "reflect-metadata";
+import { NgModule, enableProdMode } from "@angular/core";
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import { platformNativeScriptDynamic, NativeScriptModule } from "nativescript-angular/platform";
+import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { routes, routeComponents } from "./routes";
+import { AppComponent } from "./routes/app/app.component";
+import { isNative } from "./magic/utils";
+enableProdMode();
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        core_1.NgModule({
+        NgModule({
             declarations: [
-                app_component_1.AppComponent
-            ].concat(routes_1.routeComponents),
+                AppComponent
+            ].concat(routeComponents),
             bootstrap: [
-                app_component_1.AppComponent,
+                AppComponent,
             ],
             imports: [
-                platform_1.NativeScriptModule,
-                router_1.NativeScriptRouterModule,
-                router_1.NativeScriptRouterModule.forRoot(routes_1.routes),
+                NativeScriptModule,
+                NativeScriptRouterModule,
+                NativeScriptRouterModule.forRoot(routes),
             ],
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
     return AppModule;
 }());
-if (utils_1.isNative()) {
-    platform_1.platformNativeScriptDynamic().bootstrapModule(AppModule).catch(function (error) {
+if (isNative()) {
+    platformNativeScriptDynamic().bootstrapModule(AppModule).catch(function (error) {
         global.tnsconsole.error('error', error);
     });
 }
 else {
-    platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(AppModule).catch(function (error) {
+    platformBrowserDynamic().bootstrapModule(AppModule).catch(function (error) {
         global.tnsconsole.error('error', error);
     });
 }

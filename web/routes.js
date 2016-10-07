@@ -1,18 +1,17 @@
-"use strict";
-var index_component_1 = require("./routes/index/index.component");
-var threads_component_1 = require("./routes/threads/threads.component");
-exports.routeComponents = [];
-exports.routes = [
+import { IndexComponent } from "./routes/index/index.component";
+import { ThreadsComponent } from "./routes/threads/threads.component";
+export var routeComponents = [];
+export var routes = [
     route({
         path: "",
-        component: index_component_1.IndexComponent,
+        component: IndexComponent,
     }),
     route({
         path: "threads",
-        component: threads_component_1.ThreadsComponent,
+        component: ThreadsComponent,
     }),
 ];
 function route(component) {
-    exports.routeComponents.push(component.component);
+    routeComponents.push(component.component);
     return component;
 }
