@@ -1,3 +1,42 @@
-﻿import "./dev/tns.console"
-import * as app from 'application';
-app.start({ moduleName: 'main-page' });
+﻿// 
+
+import "./dev/tns.console"
+import "reflect-metadata"
+import { NgModule, enableProdMode } from "@angular/core"
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic"
+import { platformNativeScriptDynamic, NativeScriptModule } from "nativescript-angular/platform"
+import { NativeScriptRouterModule } from "nativescript-angular/router"
+import { routes, routeComponents } from "./routes"
+import { AppComponent } from "./routes/app/app.component"
+import { isNative } from "./magic/utils"
+
+
+
+enableProdMode()
+@NgModule({
+	declarations: [
+		AppComponent,
+		...routeComponents,
+	],
+	bootstrap: [
+		AppComponent,
+	],
+	imports: [
+		NativeScriptModule,
+		NativeScriptRouterModule,
+		NativeScriptRouterModule.forRoot(routes),
+	],
+})
+
+class AppModule { }
+
+if (isNative()) {
+	platformNativeScriptDynamic().bootstrapModule(AppModule).catch(function(error) {
+		global.tnsconsole.error('error', error)
+	})
+} else {
+	platformBrowserDynamic().bootstrapModule(AppModule).catch(function(error) {
+		global.tnsconsole.error('error', error)
+	})
+}
+

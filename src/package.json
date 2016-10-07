@@ -1,5 +1,8 @@
 {
 	"devDependencies": {
+		"typescript": "latest",
+		"gulp": "latest",
+		"gulp-typescript": "latest",
 		"del": "latest",
 		"merge2": "latest"
 	}
