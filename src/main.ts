@@ -2,12 +2,10 @@
 
 import "reflect-metadata"
 import { NgModule, enableProdMode } from "@angular/core"
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic"
 import { platformNativeScriptDynamic, NativeScriptModule } from "nativescript-angular/platform"
 import { NativeScriptRouterModule } from "nativescript-angular/router"
 import { routes, routeComponents } from "./routes"
 import { AppComponent } from "./routes/app/app.component"
-import { isNative } from "./magic/utils"
 
 
 
@@ -29,13 +27,5 @@ enableProdMode()
 
 class AppModule { }
 
-if (isNative()) {
-	platformNativeScriptDynamic().bootstrapModule(AppModule).catch(function(error) {
-		global.tnsconsole.error('error', error)
-	})
-} else {
-	platformBrowserDynamic().bootstrapModule(AppModule).catch(function(error) {
-		global.tnsconsole.error('error', error)
-	})
-}
+platformNativeScriptDynamic().bootstrapModule(AppModule)
 

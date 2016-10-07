@@ -17,7 +17,7 @@ gulp.task('apply:tsc', () => {
 	]).pipe(tsProject())
 
 	return merge([ // Merge the two output streams, so this task is finished when the IO of both operations are done.
-		result.js.pipe(gulp.dest('../web'))
+		result.js.pipe(gulp.dest('../app'))
 	])
 })
 
@@ -29,7 +29,7 @@ gulp.task('apply:templates', () => {
 		'./**/*.xml',
 		'./**/*.html',
 		'!./node_modules/**/*'
-	]).pipe(gulp.dest('../web')))
+	]).pipe(gulp.dest('../app')))
 })
 
 gulp.task('watch:templates', () => {
@@ -47,7 +47,7 @@ gulp.task('apply:styles', () => {
 	return merge(gulp.src([
 		'./**/*.css',
 		'!./node_modules/**/*'
-	]).pipe(gulp.dest('../web')))
+	]).pipe(gulp.dest('../app')))
 })
 
 gulp.task('watch:styles', () => {
@@ -64,7 +64,7 @@ gulp.task('apply:fonts', () => {
 	return merge(gulp.src([
 		'./**/*.ttf',
 		'!./node_modules/**/*'
-	]).pipe(gulp.dest('../web')))
+	]).pipe(gulp.dest('../app')))
 })
 
 

@@ -1,8 +1,6 @@
 ﻿// 
 
-import * as application from "application"
 import { Routes, Route } from "@angular/router"
-import { nsProvideRouter } from "nativescript-angular/router"
 import { IndexComponent } from "./routes/index/index.component"
 import { ThreadsComponent } from "./routes/threads/threads.component"
 

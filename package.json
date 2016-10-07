@@ -1,6 +1,6 @@
 {
 	"scripts": {
-		"init": "npm install && tns install && cd src && npm link typescript && npm link gulp && npm link gulp-typescript && npm install",
+		"init": "npm install && tns install && cd src && npm link typescript && npm link gulp && npm link gulp-typescript && npm install && gulp clean",
 		"src": "cd src && gulp",
 		"clean": "cd src && gulp clean",
 		"p": "tns livesync android --watch",
@@ -11,10 +11,10 @@
 	"nativescript": {
 		"id": "com.roblav96.playground",
 		"tns-android": {
-			"version": "next"
+			"version": "2.3.0"
 		},
 		"tns-ios": {
-			"version": "next"
+			"version": "2.3.0"
 		}
 	},
 	"dependencies": {
