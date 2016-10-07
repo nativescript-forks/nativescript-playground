@@ -1,6 +1,7 @@
 *.DS_STORE
 /app/**/*.css
 /app/**/*.xml
+/app/**/*.html
 /app/**/*.js
 /app/**/*.map
 /hooks/
