@@ -1,17 +1,12 @@
-"use strict";
-function isAndroid() {
+export function isAndroid() {
     return typeof NSObject !== 'undefined' && typeof NSString !== 'undefined';
 }
-exports.isAndroid = isAndroid;
-function isIos() {
+export function isIos() {
     return typeof NSObject !== 'undefined' && typeof NSString !== 'undefined';
 }
-exports.isIos = isIos;
-function isNative() {
+export function isNative() {
     return isAndroid() || isIos();
 }
-exports.isNative = isNative;
-function isWeb() {
+export function isWeb() {
     return !isNative();
 }
-exports.isWeb = isWeb;

@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,15 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var ThreadsComponent = (function () {
+import { Component } from "@angular/core";
+export var ThreadsComponent = (function () {
     function ThreadsComponent() {
         global.tnsconsole.log('ThreadsComponent > constructor');
     }
     ThreadsComponent.prototype.ngOnInit = function () {
     };
     ThreadsComponent = __decorate([
-        core_1.Component({
+        Component({
             styleUrls: ["routes/threads/threads.styles.css"],
             templateUrl: "routes/threads/threads.template.html",
         }), 
@@ -24,4 +23,3 @@ var ThreadsComponent = (function () {
     ], ThreadsComponent);
     return ThreadsComponent;
 }());
-exports.ThreadsComponent = ThreadsComponent;

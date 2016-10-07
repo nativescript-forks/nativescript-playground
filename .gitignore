@@ -4,7 +4,7 @@
 /app/**/*.html
 /app/**/*.js
 /app/**/*.map
-/native/hooks/
-/native/lib/
-/native/platforms/
+/hooks/
+/lib/
+/platforms/
 node_modules
