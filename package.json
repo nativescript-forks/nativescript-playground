@@ -20,6 +20,8 @@
 	},
 	"devDependencies": {
 		"tns-platform-declarations": "next",
+		"@types/lodash": "latest",
+		"@types/bluebird": "latest",
 		"babel-traverse": "latest",
 		"babel-types": "latest",
 		"babylon": "latest",
@@ -27,3 +29,4 @@
 		"zone.js": "latest"
 	}
 }
+
