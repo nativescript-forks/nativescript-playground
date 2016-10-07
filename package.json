@@ -11,10 +11,10 @@
 	"nativescript": {
 		"id": "com.roblav96.playground",
 		"tns-android": {
-			"version": "2.4.0-next-2016-10-06-1215"
+			"version": "next"
 		},
 		"tns-ios": {
-			"version": "2.4.0-2016-9-28-1"
+			"version": "next"
 		}
 	},
 	"dependencies": {
@@ -34,7 +34,6 @@
 		"lodash": "latest",
 		"moment": "latest",
 		"nativescript-angular": "latest",
-		"nativescript-playground-plugin": "file:plugin",
 		"rxjs": "latest",
 		"tns-core-modules": "latest"
 	},
