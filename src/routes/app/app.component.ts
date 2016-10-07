@@ -1,8 +1,6 @@
 // 
 
-import * as application from "application"
 import { Component, OnInit } from "@angular/core"
-import { RouterExtensions } from "nativescript-angular/router"
 
 
 

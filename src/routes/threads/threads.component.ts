@@ -1,8 +1,6 @@
 // 
 
-import * as application from "application"
 import { Component, OnInit } from "@angular/core"
-import { GestureEventData } from "ui/gestures"
 
 
 
