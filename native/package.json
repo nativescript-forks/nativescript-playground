@@ -1,26 +1,27 @@
 {
-	"nativescript": {
-		"id": "com.roblav96.playground",
-		"tns-android": {
-			"version": "next"
-		},
-		"tns-ios": {
-			"version": "next"
-		}
-	},
-	"dependencies": {
-		"nativescript-angular": "latest",
-		"nativescript-playground-plugin": "file:plugin",
-		"tns-core-modules": "latest"
-	},
-	"devDependencies": {
-		"tns-platform-declarations": "next",
-		"nativescript-dev-typescript": "latest",
-		"nativescript-dev-webpack": "latest",
-		"babel-traverse": "latest",
-		"babel-types": "latest",
-		"babylon": "latest",
-		"lazy": "latest",
-		"zone.js": "latest"
-	}
+  "nativescript": {
+    "id": "com.roblav96.playground",
+    "tns-android": {
+      "version": "2.3.0"
+    },
+    "tns-ios": {
+      "version": "next"
+    }
+  },
+  "dependencies": {
+    "nativescript-angular": "latest",
+    "nativescript-playground-plugin": "file:plugin",
+    "tns-core-modules": "latest"
+  },
+  "devDependencies": {
+    "babel-traverse": "latest",
+    "babel-types": "latest",
+    "babylon": "latest",
+    "lazy": "latest",
+    "nativescript-dev-typescript": "latest",
+    "nativescript-dev-webpack": "latest",
+    "tns-platform-declarations": "next",
+    "typescript": "^2.0.3",
+    "zone.js": "latest"
+  }
 }

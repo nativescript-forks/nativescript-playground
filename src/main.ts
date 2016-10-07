@@ -29,13 +29,7 @@ enableProdMode()
 
 class AppModule { }
 
-if (isNative()) {
-	platformNativeScriptDynamic().bootstrapModule(AppModule).catch(function(error) {
-		global.tnsconsole.error('error', error)
-	})
-} else {
-	platformBrowserDynamic().bootstrapModule(AppModule).catch(function(error) {
-		global.tnsconsole.error('error', error)
-	})
-}
+platformNativeScriptDynamic().bootstrapModule(AppModule).catch(function(error) {
+	global.tnsconsole.error('error', error)
+})
 
