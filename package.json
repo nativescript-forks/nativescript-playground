@@ -1,11 +1,18 @@
 {
+	"scripts": {
+		"init": "npm install && tns install && cd src && npm link typescript && npm link gulp && npm link gulp-typescript && npm install",
+		"src": "cd src && gulp",
+		"clean": "cd src && gulp clean",
+		"p": "tns livesync android --watch",
+		"i": "tns livesync ios --watch"
+	},
 	"nativescript": {
 		"id": "com.roblav96.playground",
 		"tns-android": {
-			"version": "next"
+			"version": "2.4.0-next-2016-10-06-1215"
 		},
 		"tns-ios": {
-			"version": "next"
+			"version": "2.4.0-2016-9-28-1"
 		}
 	},
 	"dependencies": {
@@ -15,14 +22,18 @@
 		"eventemitter3": "latest",
 		"lodash": "latest",
 		"moment": "latest",
+		"nativescript-playground-plugin": "file:plugin",
 		"tns-core-modules": "latest"
 	},
 	"devDependencies": {
-		"babel-traverse": "6.15.0",
-		"babel-types": "6.15.0",
-		"babylon": "6.11.2",
-		"lazy": "1.0.11",
-		"zone.js": "^0.6.21"
+		"tns-platform-declarations": "next",
+		"@types/lodash": "latest",
+		"@types/bluebird": "latest",
+		"babel-traverse": "latest",
+		"babel-types": "latest",
+		"babylon": "latest",
+		"lazy": "latest",
+		"zone.js": "latest"
 	}
 }
 
