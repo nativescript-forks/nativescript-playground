@@ -10,7 +10,7 @@ var tsify = require("tsify")
 
 
 
-let ENV = "native"
+let ENV = "web"
 
 function getEnvPath() {
 	return (ENV == "native") ? "../app" : "../web"
@@ -19,13 +19,15 @@ function getEnvPath() {
 
 
 gulp.task("browserify:app", () => {
-	return browserify()
-		.add("main.ts")
-		.plugin("tsify", {
-			noImplicitAny: true
-		})
-		.bundle()
-		.pipe(process.stdout)
+	ENV = "web"
+	return gulp.task("clean")
+	// return browserify()
+	// 	.add("main.ts")
+	// 	.plugin("tsify", {
+	// 		noImplicitAny: true
+	// 	})
+	// 	.bundle()
+	// 	.pipe(process.stdout)
 })
 
 gulp.task("b", ["browserify:app"])
