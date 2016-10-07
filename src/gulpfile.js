@@ -8,6 +8,14 @@ var del = require('del')
 
 
 
+let ENV = "native"
+
+function getEnvPath() {
+	return (ENV == "native") ? "../app" : "../web"
+}
+
+
+
 /*=====  TSC  ======*/
 let tsProject = ts.createProject('../tsconfig.json')
 gulp.task('apply:tsc', () => {
@@ -16,8 +24,8 @@ gulp.task('apply:tsc', () => {
 		'!./node_modules/**/*'
 	]).pipe(tsProject())
 
-	return merge([ // Merge the two output streams, so this task is finished when the IO of both operations are done.
-		result.js.pipe(gulp.dest('../app'))
+	return merge([
+		result.js.pipe(gulp.dest(getEnvPath()))
 	])
 })
 
@@ -29,7 +37,7 @@ gulp.task('apply:templates', () => {
 		'./**/*.xml',
 		'./**/*.html',
 		'!./node_modules/**/*'
-	]).pipe(gulp.dest('../app')))
+	]).pipe(gulp.dest(getEnvPath())))
 })
 
 gulp.task('watch:templates', () => {
@@ -47,7 +55,7 @@ gulp.task('apply:styles', () => {
 	return merge(gulp.src([
 		'./**/*.css',
 		'!./node_modules/**/*'
-	]).pipe(gulp.dest('../app')))
+	]).pipe(gulp.dest(getEnvPath())))
 })
 
 gulp.task('watch:styles', () => {
@@ -64,7 +72,7 @@ gulp.task('apply:fonts', () => {
 	return merge(gulp.src([
 		'./**/*.ttf',
 		'!./node_modules/**/*'
-	]).pipe(gulp.dest('../app')))
+	]).pipe(gulp.dest(getEnvPath())))
 })
 
 
@@ -94,8 +102,8 @@ gulp.task('clean:app', () => {
 
 
 
-gulp.task('default', ['clean:js', 'apply:fonts', 'apply:styles', 'apply:templates', 'apply:tsc', 'watch:styles', 'watch:templates'], function () {
-	gulp.watch([
+gulp.task('default', ['clean:js', 'apply:fonts', 'apply:styles', 'apply:templates', 'apply:tsc', 'watch:styles', 'watch:templates'], () => {
+	return gulp.watch([
 		'./**/*.ts',
 		'!./node_modules/**/*',
 	], ['apply:tsc'])
