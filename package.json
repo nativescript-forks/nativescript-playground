@@ -16,7 +16,7 @@
 		"lodash": "latest",
 		"moment": "latest",
 		"nativescript-playground-plugin": "file:plugin",
-		"tns-core-modules": "next"
+		"tns-core-modules": "latest"
 	},
 	"devDependencies": {
 		"tns-platform-declarations": "next",
