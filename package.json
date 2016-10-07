@@ -11,7 +11,7 @@
 	"nativescript": {
 		"id": "com.roblav96.playground",
 		"tns-android": {
-			"version": "2.4.0-next-2016-09-29-1186"
+			"version": "2.4.0-next-2016-10-06-1215"
 		},
 		"tns-ios": {
 			"version": "2.4.0-2016-9-28-1"
@@ -42,10 +42,10 @@
 		"@types/bluebird": "latest",
 		"browserify": "latest",
 		"http-server": "latest",
-		"babel-traverse": "6.15.0",
-		"babel-types": "6.15.0",
-		"babylon": "6.11.2",
-		"lazy": "1.0.11",
-		"zone.js": "^0.6.21"
+		"babel-traverse": "latest",
+		"babel-types": "latest",
+		"babylon": "latest",
+		"lazy": "latest",
+		"zone.js": "latest"
 	}
 }
