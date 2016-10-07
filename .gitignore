@@ -1,4 +1,6 @@
 *.DS_STORE
+/web/**/*
+!/web/index.html
 /app/**/*.css
 /app/**/*.xml
 /app/**/*.html
