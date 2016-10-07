@@ -1,5 +1,8 @@
 ﻿// 
 
+import "./dev/tns.console"
+console.time('bootstrapModule')
+global.tnsconsole.log('bootstrapModule')
 import "reflect-metadata"
 import { NgModule, enableProdMode } from "@angular/core"
 import { platformNativeScriptDynamic, NativeScriptModule } from "nativescript-angular/platform"
@@ -28,4 +31,6 @@ enableProdMode()
 class AppModule { }
 
 platformNativeScriptDynamic().bootstrapModule(AppModule)
-
+// .then(function(ngmodule: any) {
+// 	global.tnsconsole.log('bootstrapModule> DONE')
+// })

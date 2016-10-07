@@ -11,22 +11,22 @@
 	"nativescript": {
 		"id": "com.roblav96.playground",
 		"tns-android": {
-			"version": "2.3.0"
+			"version": "2.4.0-next-2016-09-29-1186"
 		},
 		"tns-ios": {
-			"version": "2.3.0"
+			"version": "2.4.0-2016-9-28-1"
 		}
 	},
 	"dependencies": {
-		"@angular/core": "latest",
-		"@angular/common": "latest",
-		"@angular/compiler": "latest",
-		"@angular/forms": "latest",
-		"@angular/http": "latest",
-		"@angular/platform-browser": "latest",
-		"@angular/platform-browser-dynamic": "latest",
-		"@angular/platform-server": "latest",
-		"@angular/router": "latest",
+		"@angular/core": "2.1.0-beta.0",
+		"@angular/common": "2.1.0-beta.0",
+		"@angular/compiler": "2.1.0-beta.0",
+		"@angular/forms": "2.1.0-beta.0",
+		"@angular/http": "2.1.0-beta.0",
+		"@angular/platform-browser": "2.1.0-beta.0",
+		"@angular/platform-browser-dynamic": "2.1.0-beta.0",
+		"@angular/platform-server": "2.1.0-beta.0",
+		"@angular/router": "3.1.0-beta.0",
 		"ansicolors": "latest",
 		"ansistyles": "latest",
 		"bluebird": "latest",
@@ -34,19 +34,18 @@
 		"lodash": "latest",
 		"moment": "latest",
 		"nativescript-angular": "latest",
-		"rxjs": "latest",
 		"tns-core-modules": "latest"
 	},
 	"devDependencies": {
 		"tns-platform-declarations": "next",
 		"@types/lodash": "latest",
 		"@types/bluebird": "latest",
-		"babel-traverse": "latest",
-		"babel-types": "latest",
-		"babylon": "latest",
 		"browserify": "latest",
 		"http-server": "latest",
-		"lazy": "latest",
-		"zone.js": "latest"
+		"babel-traverse": "6.15.0",
+		"babel-types": "6.15.0",
+		"babylon": "6.11.2",
+		"lazy": "1.0.11",
+		"zone.js": "^0.6.21"
 	}
 }

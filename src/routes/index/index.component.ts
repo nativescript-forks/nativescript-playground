@@ -1,6 +1,9 @@
 // 
 
+import * as application from "application"
 import { Component, OnInit } from "@angular/core"
+import { RouterExtensions } from "nativescript-angular/router"
+import { GestureEventData } from "ui/gestures"
 
 
 
@@ -11,18 +14,21 @@ import { Component, OnInit } from "@angular/core"
 
 export class IndexComponent implements OnInit {
 
+	android: boolean = (application.android) ? true : false
+	ios: boolean = (application.ios) ? true : false
+
 	constructor(
 
 	) {
-		console.log('IndexComponent > constructorzzzsdadawdawd')
+		global.tnsconsole.log('IndexComponent > constructorzzzsdadawdawd')
 	}
 
 	ngOnInit() {
 
 	}
-
+	
 	threads() {
-
+		
 	}
 
 }

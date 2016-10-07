@@ -1,6 +1,8 @@
 // 
 
+import * as application from "application"
 import { Component, OnInit } from "@angular/core"
+import { GestureEventData } from "ui/gestures"
 
 
 
@@ -14,7 +16,7 @@ export class ThreadsComponent implements OnInit {
 	constructor(
 
 	) {
-		console.log('ThreadsComponent > constructor')
+		global.tnsconsole.log('ThreadsComponent > constructor')
 	}
 
 	ngOnInit() {
