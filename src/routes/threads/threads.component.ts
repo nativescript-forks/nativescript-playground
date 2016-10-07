@@ -14,7 +14,7 @@ export class ThreadsComponent implements OnInit {
 	constructor(
 
 	) {
-		global.tnsconsole.log('ThreadsComponent > constructor')
+		console.log('ThreadsComponent > constructor')
 	}
 
 	ngOnInit() {

@@ -14,7 +14,7 @@ export class IndexComponent implements OnInit {
 	constructor(
 
 	) {
-		global.tnsconsole.log('IndexComponent > constructorzzzsdadawdawd')
+		console.log('IndexComponent > constructorzzzsdadawdawd')
 	}
 
 	ngOnInit() {
