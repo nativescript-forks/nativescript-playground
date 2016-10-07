@@ -1,5 +1,11 @@
 {
+	"scripts": {
+		"b": "browserify main.ts -p [ tsify --noImplicitAny ] > bundle.js"
+	},
 	"devDependencies": {
+		"browserify": "latest",
+		"tsify": "latest",
+		"http-server": "latest",
 		"typescript": "latest",
 		"gulp": "latest",
 		"gulp-typescript": "latest",

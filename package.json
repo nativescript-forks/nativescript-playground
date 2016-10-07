@@ -6,7 +6,7 @@
 		"p": "tns livesync android --watch",
 		"i": "tns livesync ios --watch",
 		"w": "http-server ./web",
-		"b": "browserify -s main web/main.js > web/bundle.js"
+		"b": "browserify src/main.ts -p [ tsify --noImplicitAny ] > web/bundle.js"
 	},
 	"nativescript": {
 		"id": "com.roblav96.playground",
@@ -40,8 +40,6 @@
 		"tns-platform-declarations": "next",
 		"@types/lodash": "latest",
 		"@types/bluebird": "latest",
-		"browserify": "latest",
-		"http-server": "latest",
 		"babel-traverse": "latest",
 		"babel-types": "latest",
 		"babylon": "latest",

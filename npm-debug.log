@@ -1,0 +1,45 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'b' ]
+2 info using npm@3.10.3
+3 info using node@v6.5.0
+4 verbose run-script [ 'preb', 'b', 'postb' ]
+5 info lifecycle @~preb: @
+6 silly lifecycle @~preb: no script for preb, continuing
+7 info lifecycle @~b: @
+8 verbose lifecycle @~b: unsafe-perm in lifecycle true
+9 verbose lifecycle @~b: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/roblav96/Projects/nativescript-playground/node_modules/.bin:/usr/local/bin:/Users/roblav96/Library/Android/android-ndk:/usr/local/opt/llvm/bin:/Users/roblav96/Library/Android/tools:/Users/roblav96/Library/Android/build-tools/24.0.0:/Users/roblav96/Library/Android/platform-tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+10 verbose lifecycle @~b: CWD: /Users/roblav96/Projects/nativescript-playground
+11 silly lifecycle @~b: Args: [ '-c',
+11 silly lifecycle   'browserify src/main.ts -p [ tsify --noImplicitAny ] > web/bundle.js' ]
+12 info lifecycle @~b: Failed to exec b script
+13 verbose stack Error: @ b: `browserify src/main.ts -p [ tsify --noImplicitAny ] > web/bundle.js`
+13 verbose stack spawn ENOENT
+13 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:33:16)
+13 verbose stack     at emitTwo (events.js:106:13)
+13 verbose stack     at ChildProcess.emit (events.js:191:7)
+13 verbose stack     at maybeClose (internal/child_process.js:877:16)
+13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+14 verbose pkgid @
+15 verbose cwd /Users/roblav96/Projects/nativescript-playground
+16 error Darwin 15.6.0
+17 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "b"
+18 error node v6.5.0
+19 error npm  v3.10.3
+20 error file sh
+21 error code ELIFECYCLE
+22 error errno ENOENT
+23 error syscall spawn
+24 error @ b: `browserify src/main.ts -p [ tsify --noImplicitAny ] > web/bundle.js`
+24 error spawn ENOENT
+25 error Failed at the @ b script 'browserify src/main.ts -p [ tsify --noImplicitAny ] > web/bundle.js'.
+25 error Make sure you have the latest version of node.js and npm installed.
+25 error If you do, this is most likely a problem with the  package,
+25 error not with npm itself.
+25 error Tell the author that this fails on your system:
+25 error     browserify src/main.ts -p [ tsify --noImplicitAny ] > web/bundle.js
+25 error You can get information on how to open an issue for this project with:
+25 error     npm bugs
+25 error Or if that isn't available, you can get their info via:
+25 error     npm owner ls
+25 error There is likely additional logging output above.
+26 verbose exit [ 1, true ]
