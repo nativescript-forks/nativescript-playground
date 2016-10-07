@@ -113,6 +113,7 @@ gulp.task("clean:app", () => {
 		"!../app/App_Resources",
 		"!../app/App_Resources/**/*",
 		"!../app/package.json",
+		"!../app/tns-java-classes.js",
 	], {
 		force: true,
 	})
