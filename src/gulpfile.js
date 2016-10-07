@@ -23,42 +23,54 @@ gulp.task('apply:tsc', function () {
 
 
 
-/*=====  XML  ======*/
-gulp.task('apply:xml', () => {
+/*=====  TEMPLATES  ======*/
+gulp.task('apply:templates', () => {
 	return merge(gulp.src([
 		'./**/*.xml',
+		'./**/*.html',
 		'!./node_modules/**/*'
 	]).pipe(gulp.dest('../app')))
 })
 
-gulp.task('watch:xml', () => {
+gulp.task('watch:templates', () => {
 	return gulp.watch([
 		'./**/*.xml',
+		'./**/*.html',
 		'!./node_modules/**/*'
-	], ['apply:xml'])
+	], ['apply:templates'])
 })
 
 
 
-/*=====  CSS  ======*/
-gulp.task('apply:css', () => {
+/*=====  STYLES  ======*/
+gulp.task('apply:styles', () => {
 	return merge(gulp.src([
 		'./**/*.css',
 		'!./node_modules/**/*'
 	]).pipe(gulp.dest('../app')))
 })
 
-gulp.task('watch:css', () => {
+gulp.task('watch:styles', () => {
 	return gulp.watch([
 		'./**/*.css',
 		'!./node_modules/**/*'
-	], ['apply:css'])
+	], ['apply:styles'])
 })
 
 
 
-/*=====  JS  ======*/
-gulp.task('apply:js', () => {
+/*=====  FONTS  ======*/
+gulp.task('apply:fonts', () => {
+	return merge(gulp.src([
+		'./**/*.ttf',
+		'!./node_modules/**/*'
+	]).pipe(gulp.dest('../app')))
+})
+
+
+
+/*=====  CLEAN JS  ======*/
+gulp.task('clean:js', () => {
 	del([
 		'./**/*.js',
 		'!./node_modules/**/*',
@@ -68,7 +80,7 @@ gulp.task('apply:js', () => {
 
 
 
-gulp.task('default', ['apply:tsc', 'apply:js', 'apply:css', 'apply:xml', 'watch:css', 'watch:xml'], function () {
+gulp.task('default', ['clean:js', 'apply:fonts', 'apply:styles', 'apply:templates', 'apply:tsc', 'watch:styles', 'watch:templates'], function () {
 	gulp.watch([
 		'./**/*.ts',
 		'!./node_modules/**/*'
