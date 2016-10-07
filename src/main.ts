@@ -1,6 +1,5 @@
 ﻿// 
 
-import "./dev/tns.console"
 console.time('bootstrapModule')
 console.log('bootstrapModule')
 import "reflect-metadata"
