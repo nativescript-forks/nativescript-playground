@@ -2,11 +2,11 @@
 	"folders": [{
 		"path": ".",
 		"folder_exclude_patterns": [
-			"app",
+			"native/app",
+			"native/hooks",
+			"native/lib",
+			"native/platforms",
 			"node_modules",
-			"platforms",
-			"lib",
-			"hooks",
 			"web",
 		],
 		"file_exclude_patterns": [
