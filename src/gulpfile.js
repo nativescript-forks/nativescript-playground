@@ -10,7 +10,7 @@ var del = require('del')
 
 /*=====  TSC  ======*/
 let tsProject = ts.createProject('../tsconfig.json')
-gulp.task('apply:tsc', function () {
+gulp.task('apply:tsc', () => {
 	let result = gulp.src([
 		'./**/*.ts',
 		'!./node_modules/**/*'
@@ -71,11 +71,25 @@ gulp.task('apply:fonts', () => {
 
 /*=====  CLEAN JS  ======*/
 gulp.task('clean:js', () => {
-	del([
+	return del([
 		'./**/*.js',
 		'!./node_modules/**/*',
-		'!./gulpfile.js'
+		'!./gulpfile.js',
 	])
+})
+
+
+
+/*=====  CLEAN APP  ======*/
+gulp.task('clean:app', () => {
+	return del([
+		'../app/**/*',
+		'!../app/App_Resources',
+		'!../app/App_Resources/**/*',
+		'!../app/package.json',
+	], {
+		force: true,
+	})
 })
 
 
@@ -83,7 +97,9 @@ gulp.task('clean:js', () => {
 gulp.task('default', ['clean:js', 'apply:fonts', 'apply:styles', 'apply:templates', 'apply:tsc', 'watch:styles', 'watch:templates'], function () {
 	gulp.watch([
 		'./**/*.ts',
-		'!./node_modules/**/*'
+		'!./node_modules/**/*',
 	], ['apply:tsc'])
 })
+
+gulp.task('clean', ['clean:app', 'clean:js'])
 
