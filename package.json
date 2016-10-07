@@ -25,7 +25,6 @@
 		"lodash": "latest",
 		"moment": "latest",
 		"nativescript-angular": "latest",
-		"nativescript-playground-plugin": "file:plugin",
 		"rxjs": "latest",
 		"tns-core-modules": "latest"
 	},
