@@ -1,18 +1,26 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-		"lib": [
-			"es2016"
-		],
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "removeComments": true,
-        "sourceMap": false
-    },
-    "exclude": [
-        "node_modules",
-		"src/node_modules",
-        "platforms"
-    ]
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es5",
+		"lib": ["es2016"],
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"outDir": "temp",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"removeComments": true,
+		"sourceMap": false,
+		"pretty": true
+	},
+	"include": [
+		"node_modules/tns-core-modules/tns-core-modules.es2016.d.ts",
+		"node_modules/tns-platform-declarations/android.d.ts",
+		"node_modules/tns-platform-declarations/ios.d.ts",
+		"typings/**/*.ts",
+		"src/**/*.ts"
+	],
+	"exclude": [
+		"src/node_modules"
+	]
 }
+
