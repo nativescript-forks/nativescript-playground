@@ -1,8 +1,12 @@
 ﻿/**/
 
 button {
-    font-size: 30;
-    horizontal-align: center;
+    font-size: 40;
+}
+
+.stack {
+    border-color: red;
+    border-width: 1;
 }
 
 

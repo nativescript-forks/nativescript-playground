@@ -1,19 +1,20 @@
 <!--  -->
 
-<Page loaded="onLoaded">
+<Page loaded="onLoaded" navigatedTo="{{ onNavigatedTo }}">
 
     <Page.actionBar>
-        <ActionBar title="Playground">
-        </ActionBar>
+        <ActionBar title="Playground"></ActionBar>
     </Page.actionBar>
 
-    <GridLayout rows="*">
+    <GridLayout id="main_layout" rows="auto,*">
 
-        <DockLayout row="0">
-            <StackLayout dock="top">
-                <Button class="button-large" text="Do It" tap="{{ doit }}" />
-            </StackLayout>
-        </DockLayout>
+        <StackLayout id="top_stack" row="0" class="stack" height="200">
+            <Button class="" text="Top Do It" tap="{{ onTopDoIt }}" />
+        </StackLayout>
+
+        <StackLayout id="bottom_stack" row="1" class="stack">
+            <Button class="" text="Bottom Do It" tap="{{ onBottomDoIt }}" />
+        </StackLayout>
 
     </GridLayout>
 
