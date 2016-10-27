@@ -1,17 +1,17 @@
 // 
 
-import { isArray, isUndefined, isNull } from "lodash"
-import * as application from "application"
-import * as moment from "moment"
-var colors = require("ansicolors")
-var styles = require("ansistyles")
+import { isArray, isUndefined, isNull, keysIn, functionsIn, difference } from 'lodash'
+import * as moment from 'moment'
+import * as application from 'application'
+var colors = require('ansicolors')
+var styles = require('ansistyles')
 
 
 
 global.tnsconsole = {
-	'chrome': function chrome(str: string, obj: any) {
+	'chrome': function chrome(desc: string, obj: any) {
 		let sendi: any = {
-			str: str,
+			desc: desc,
 			members: '',
 			properties: [],
 			array: {},
@@ -28,7 +28,7 @@ global.tnsconsole = {
 				cachev.push(v)
 			}
 			if (typeof v === 'function') {
-				return k + "()" + v
+				return k + '()' + v
 			}
 			return v
 		}, 4)
@@ -42,7 +42,7 @@ global.tnsconsole = {
 		// 		cachev.push(v)
 		// 	}
 		// 	if (typeof v === 'function') {
-		// 		return k + "()" + v
+		// 		return k + '()' + v
 		// 	}
 		// 	return v
 		// })
@@ -57,7 +57,7 @@ global.tnsconsole = {
 				}
 				else {
 					if (typeof (obj[id]) !== 'object' && cachei.indexOf(id) === -1) {
-						sendi.properties.push(id + ": " + (obj[id]))
+						sendi.properties.push(id + ': ' + (obj[id]))
 					}
 				}
 			} catch (err) {
@@ -100,12 +100,12 @@ global.tnsconsole = {
 		// if (size <= 1000 && forcearray == false) {
 		// 	console.dump(obj)
 		// } else {
-		// 	// console.log('\n ' + colors.blue('[CHROME] ') + '> ' + str + '\n \n')
+		// 	// console.log('\n ' + colors.blue('[CHROME] ') + '> ' + desc + '\n \n')
 		// 	console.log(colors.blue(styles.underline('[Node Inspector]')))
 		// 	// request({
 		// 	// 	url: ip + '/api/log',
-		// 	// 	method: "POST",
-		// 	// 	headers: { "Content-Type": "application/json" },
+		// 	// 	method: 'POST',
+		// 	// 	headers: { 'Content-Type': 'application/json' },
 		// 	// 	content: JSON.stringify(sendi),
 		// 	// })
 		// }
@@ -166,7 +166,7 @@ global.tnsconsole = {
 		let t: string = moment().format('hh:mm:ss:SSS') + ' '
 		let stack: string = (<any>(new Error())).stack.toString()
 		if (stack) {
-			stack = stack.replace(/^([^\n]*?\n){2}((.|\n)*)$/gmi, "$2")
+			stack = stack.replace(/^([^\n]*?\n){2}((.|\n)*)$/gmi, '$2')
 			stack = stack.split('\n')[num]
 			stack = '@' + stack.substring(6, stack.length)
 		} else {
@@ -202,19 +202,104 @@ global.tnsconsole = {
 		this.logit('error', args)
 	},
 
-	'dumpit': function dumpit(def: string, obj: any) {
+	'dumpit': function dumpit(desc: string, obj: any) {
+		console.log('\n' + colors.blue('▼ ▼ ▼ ▼  ' + styles.underline(desc) + '  ▼ ▼ ▼ ▼') + ' ' + this.getStack(1))
 		if (isUndefined(obj) || isNull(obj)) {
-			console.log('\n' + colors.red('▼ ▼ ▼ ▼  ' + styles.underline(def) + '  ▼ ▼ ▼ ▼') + ' ' + this.getStack(1))
 			console.log('\n' + colors.red('IS NULL'))
-			console.log('\n' + colors.red('▲ ▲ ▲ ▲  ' + styles.underline(def) + '  ▲ ▲ ▲ ▲') + '\n')
 		} else {
-			console.log('\n' + colors.blue('▼ ▼ ▼ ▼  ' + styles.underline(def) + '  ▼ ▼ ▼ ▼') + ' ' + this.getStack(1))
-			this.chrome(def, obj)
-			console.log('\n' + colors.blue('▲ ▲ ▲ ▲  ' + styles.underline(def) + '  ▲ ▲ ▲ ▲') + '\n')
+			// this.chrome(desc, obj)
+			console.dump(obj)
 		}
+		console.log('\n' + colors.blue('▲ ▲ ▲ ▲  ' + styles.underline(desc) + '  ▲ ▲ ▲ ▲') + '\n')
+	},
+
+	'keys': function keys(desc: string, obj: any) {
+		console.log('\n' + colors.blue('▼ ▼ ▼ ▼  ' + styles.underline(desc) + '  ▼ ▼ ▼ ▼') + ' ' + this.getStack(1))
+		if (isUndefined(obj)) {
+			console.log('\n' + colors.red('IS UNDEFINED'))
+		} else if (isNull(obj)) {
+			console.log('\n' + colors.red('IS NULL'))
+		} else {
+			let sendi: string = '\n'
+			let fns: Array<string> = functionsIn(obj)
+			let _fns: Array<string> = []
+			let keys: Array<string> = difference(keysIn(obj), fns)
+			let _keys: Array<string> = []
+
+			{
+				let i: number, len: number = keys.length
+				for (i = 0; i < len; i++) {
+					if (keys[i].charAt(0) == '_') {
+						_keys.push(keys[i])
+					}
+				}
+			}
+			keys = difference(keys, _keys)
+
+			{
+				let i: number, len: number = keys.length
+				if (len > 0) {
+					sendi = sendi + '\n' + colors.blue('KEYS') + '\n'
+				}
+				for (i = 0; i < len; i++) {
+					sendi = sendi + keys[i] + '\n'
+				}
+			}
+
+			{
+				let i: number, len: number = _keys.length
+				if (len > 0) {
+					sendi = sendi + '\n' + colors.blue('_PRIVATE KEYS') + '\n'
+				}
+				for (i = 0; i < len; i++) {
+					sendi = sendi + _keys[i] + '\n'
+				}
+			}
+
+			{
+				let i: number, len: number = fns.length
+				for (i = 0; i < len; i++) {
+					if (fns[i].charAt(0) == '_') {
+						_fns.push(fns[i])
+					}
+				}
+			}
+			fns = difference(fns, _fns)
+
+			{
+				let i: number, len: number = fns.length
+				if (len > 0) {
+					sendi = sendi + '\n' + colors.blue('FUNCTIONS') + '\n'
+				}
+				for (i = 0; i < len; i++) {
+					sendi = sendi + fns[i] + '()\n'
+				}
+			}
+
+			{
+				let i: number, len: number = _fns.length
+				if (len > 0) {
+					sendi = sendi + '\n' + colors.blue('_PRIVATE FUNCTIONS') + '\n'
+				}
+				for (i = 0; i < len; i++) {
+					sendi = sendi + _fns[i] + '()\n'
+				}
+			}
+
+			console.log(sendi + '\n')
+		}
+		console.log('\n' + colors.blue('▲ ▲ ▲ ▲  ' + styles.underline(desc) + '  ▲ ▲ ▲ ▲') + '\n')
 	},
 
 }
+
+// global.tnsconsole = {}
+// global.tnsconsole.log = global.console.log
+// global.tnsconsole.info = global.console.info
+// global.tnsconsole.warn = global.console.warn
+// global.tnsconsole.error = global.console.error
+// global.tnsconsole.dump = global.console.dumpit
+// global.tnsconsole.dir = global.console.dumpit
 
 global.tnsconsole.dump = global.tnsconsole.dumpit
 global.tnsconsole.dir = global.tnsconsole.dumpit

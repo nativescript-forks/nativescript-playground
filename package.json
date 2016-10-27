@@ -23,7 +23,7 @@
 		"lodash": "latest",
 		"moment": "latest",
 		"nativescript-playground-plugin": "file:plugin",
-		"tns-core-modules": "2.4.0-2016-10-19-4474",
+		"tns-core-modules": "2.4.0-2016-10-19-4474"
 	},
 	"devDependencies": {
 		"tns-platform-declarations": "next",

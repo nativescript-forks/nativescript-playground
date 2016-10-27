@@ -1,8 +1,8 @@
 // 
 
-import * as application from "application"
-import {Observable, EventData} from "data/observable"
-import {Page, NavigatedData} from "ui/page"
+import * as application from 'application'
+import {Observable, EventData} from 'data/observable'
+import {Page, NavigatedData} from 'ui/page'
 
 
 
