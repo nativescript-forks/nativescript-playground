@@ -32,10 +32,14 @@ export function onNavigatedTo(args: NavigatedData) {
 	let page: Page = <Page>args.object
 	let context: MainPage = page.bindingContext
 
-	// let wrapper = page.getViewById('chart_wrapper')
-	// let size = wrapper.getActualSize()
-	// let view = page.getViewById('chart')
+	let wrapper = page.getViewById('chart_wrapper')
+	let size = wrapper.getActualSize()
+	let view = page.getViewById('chart')
+
 	// view.ios.frame = CGRectMake(0, 0, size.width, size.height)
+	// let vw = view.android as com.github.mikephil.charting.charts.LineChart
+	// vw.layout(0, 0, size.width, size.height)
+	// vw.setLayoutParams(new android.view.ViewGroup.LayoutParams(size.width, size.height))
 
 }
 
@@ -119,8 +123,10 @@ export function doit(args: EventData) {
 	ds.setColor(new Color('#0ff').android)
 	ds.setLineWidth(5)
 
-	let d = new com.github.mikephil.charting.data.LineData(java.util.Arrays.asList([ds]))
-	
+	let dss = Array.create(com.github.mikephil.charting.data.LineDataSet, 1)
+	dss[0] = ds
+
+	let d = new com.github.mikephil.charting.data.LineData(dss)
 	chart.setData(d)
 	chart.invalidate()
 }
