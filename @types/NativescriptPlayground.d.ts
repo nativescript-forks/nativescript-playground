@@ -5,13 +5,19 @@ declare class BoltThreads extends NSObject {
 
 	static new(): BoltThreads; // inherited from NSObject
 
-	allowedContactKeys(): NSArray<CNKeyDescriptor>;
+	getAllContactsAsync(): any;
+
+	getContactByIdAsyncWithId(Id: string): any;
 
 	getContacts(): void;
 
 	getContactsAsync(completion: (p1: NSArray<CNContact>, p2: NSError) => void): void;
 
+	getContactsByNameAsyncWithName(Name: string): any;
+
 	getContactsOnBackgroundThreadWithCompletion(completion: (p1: NSArray<CNContact>) => void): void;
+
+	selectionContactKeys(): NSArray<CNKeyDescriptor>;
 
 	sqlReadAsyncWithPathStatementsVersion(Path: string, Statements: string, Version: number): any;
 

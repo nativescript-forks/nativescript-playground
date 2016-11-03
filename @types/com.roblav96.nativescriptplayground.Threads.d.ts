@@ -20,10 +20,17 @@ declare module com {
 declare module com {
 	export module roblav96 {
 		export module nativescriptplayground {
-			export class MySmsRader extends java.lang.Object {
+			export class MySmsRadar extends java.lang.Object {
 				public constructor(param0: android.content.Context, param1: string, param2: string);
 				public stopService(param0: android.content.Context): void;
+				public addUname(param0: string): void;
+				public removeUname(param0: string): void;
+				public setUnames(param0: native.Array<string>): void;
 				public constructor();
+			}
+			export module MySmsRadar {
+				export class SmsItem extends java.lang.Object {
+				}
 			}
 		}
 	}

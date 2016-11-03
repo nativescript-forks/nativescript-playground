@@ -1,5 +1,21 @@
 // 
 
+
+
+declare global {
+	export class NSObject {
+
+		pop_addAnimationForKey(anim: POPAnimation, key: string): void;
+		pop_animationForKey(key: string): any;
+		pop_animationKeys(): NSArray<any>;
+		pop_removeAllAnimations(): void;
+		pop_removeAnimationForKey(key: string): void;
+
+	}
+}
+
+
+
 declare interface ArrayConstructor {
 	create(arg1: any, arg2: any): any
 }
@@ -26,17 +42,4 @@ declare module 'url' {
 	export function format(url: Url): string;
 	export function resolve(from: string, to: string): string;
 }
-
-
-
-declare global {
-	export class NSObject {
-		pop_addAnimationForKey(anim: POPAnimation, key: string): void;
-		pop_animationForKey(key: string): any;
-		pop_animationKeys(): NSArray<any>;
-		pop_removeAllAnimations(): void;
-		pop_removeAnimationForKey(key: string): void;
-	}
-}
-
 

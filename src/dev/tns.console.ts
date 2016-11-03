@@ -1,7 +1,5 @@
 // 
 
-import { isArray, isUndefined, isNull, keysIn, functionsIn, difference } from 'lodash'
-import * as moment from 'moment'
 import * as application from 'application'
 var colors = require('ansicolors')
 var styles = require('ansistyles')
@@ -9,112 +7,6 @@ var styles = require('ansistyles')
 
 
 global.tnsconsole = {
-	'chrome': function chrome(desc: string, obj: any) {
-		let sendi: any = {
-			desc: desc,
-			members: '',
-			properties: [],
-			array: {},
-		}
-
-		let cachei = []
-		let cachev = []
-		sendi.members = JSON.stringify(obj, function(k, v) {
-			cachei.push(k)
-			if (typeof v === 'object' && v !== null) {
-				if (cachev.indexOf(v) !== -1) {
-					return (v.toString ? v.toString() : v)
-				}
-				cachev.push(v)
-			}
-			if (typeof v === 'function') {
-				return k + '()' + v
-			}
-			return v
-		}, 4)
-
-		// sendi.members = map(obj, function(v, k) {
-		// 	cachei.push(k)
-		// 	if (typeof v === 'object' && v !== null) {
-		// 		if (cachev.indexOf(v) !== -1) {
-		// 			return (v.toString ? v.toString() : v)
-		// 		}
-		// 		cachev.push(v)
-		// 	}
-		// 	if (typeof v === 'function') {
-		// 		return k + '()' + v
-		// 	}
-		// 	return v
-		// })
-
-		// console.log(colors.blue('[sendi] '), sendi)
-		// console.dump(sendi)
-
-		for (var id in obj) {
-			try {
-				if (typeof (obj[id]) === 'function') {
-					sendi.properties.push(id + '()')
-				}
-				else {
-					if (typeof (obj[id]) !== 'object' && cachei.indexOf(id) === -1) {
-						sendi.properties.push(id + ': ' + (obj[id]))
-					}
-				}
-			} catch (err) {
-				sendi.properties.push(id + ': inaccessible')
-			}
-		}
-
-		let forcearray: boolean = false
-		if (isArray(obj)) {
-			forcearray = true
-			// global.tnsconsole.error('forcearray', forcearray)
-			// global.tnsconsole.error('isArray(obj)', isArray(obj))
-			let i, len = obj.length
-			for (i = 0; i < len; i++) {
-				sendi.array[i] = obj[i]
-			}
-			// global.tnsconsole.log('sendi.array', sendi.array)
-		}
-
-		// android.util.Log.v(obj)
-		// console.log(obj)
-		// console.dump(obj)
-
-		//      global.tnsconsole.log('typeof logit', typeof logit)
-
-		//      let is = []
-		//      let vs = []
-
-		//      if (isFunction(logit)) {
-		// sendi = JSON.stringify(logit.toString())
-		//      } else if (isString(logit) || isNumber(logit) || isBoolean(logit)) {
-		// sendi = JSON.stringify(logit)
-		//      } else if (isArray(logit)) {
-
-		//      }
-
-		console.dump(obj)
-
-		// let size: any = Object.keys(sendi.members).length
-		// if (size <= 1000 && forcearray == false) {
-		// 	console.dump(obj)
-		// } else {
-		// 	// console.log('\n ' + colors.blue('[CHROME] ') + '> ' + desc + '\n \n')
-		// 	console.log(colors.blue(styles.underline('[Node Inspector]')))
-		// 	// request({
-		// 	// 	url: ip + '/api/log',
-		// 	// 	method: 'POST',
-		// 	// 	headers: { 'Content-Type': 'application/json' },
-		// 	// 	content: JSON.stringify(sendi),
-		// 	// })
-		// }
-
-		cachei = null
-		cachev = null
-		sendi = null
-	},
-
 	'logit': function logit(type: string, args: any[]) {
 		let errs = []
 		let str = '\n' // + this.getStack() + '\n'
@@ -151,6 +43,7 @@ global.tnsconsole = {
 				this.dumpit('ERROR', errs[i])
 				let stack: string = (<any>(new Error())).stack.toString()
 				console.error(stack)
+				console.trace()
 				if (errs[i].description) {
 					console.error(errs[i].description)
 				}
@@ -162,8 +55,10 @@ global.tnsconsole = {
 		if (application.ios) {
 			num--
 		}
-		// let t: string = colors.magenta(moment().format('hh:mm:ss:SSS')) + ' '
-		let t: string = moment().format('hh:mm:ss:SSS') + ' '
+
+		let now: Date = new Date()
+		let t: string = (now.getHours() % 12 || 12) + ':' + now.getMinutes() + ':' + now.getSeconds() + ':' + now.getMilliseconds() + ' '
+		// let t: string = moment().format('hh:mm:ss:SSS') + ' '
 		let stack: string = (<any>(new Error())).stack.toString()
 		if (stack) {
 			stack = stack.replace(/^([^\n]*?\n){2}((.|\n)*)$/gmi, '$2')
@@ -204,7 +99,7 @@ global.tnsconsole = {
 
 	'dumpit': function dumpit(desc: string, obj: any) {
 		console.log('\n' + colors.blue('▼ ▼ ▼ ▼  ' + styles.underline(desc) + '  ▼ ▼ ▼ ▼') + ' ' + this.getStack(1))
-		if (isUndefined(obj) || isNull(obj)) {
+		if (_.isUndefined(obj) || _.isNull(obj)) {
 			console.log('\n' + colors.red('IS NULL'))
 		} else {
 			// this.chrome(desc, obj)
@@ -215,15 +110,15 @@ global.tnsconsole = {
 
 	'keys': function keys(desc: string, obj: any) {
 		console.log('\n' + colors.blue('▼ ▼ ▼ ▼  ' + styles.underline(desc) + '  ▼ ▼ ▼ ▼') + ' ' + this.getStack(1))
-		if (isUndefined(obj)) {
+		if (_.isUndefined(obj)) {
 			console.log('\n' + colors.red('IS UNDEFINED'))
-		} else if (isNull(obj)) {
+		} else if (_.isNull(obj)) {
 			console.log('\n' + colors.red('IS NULL'))
 		} else {
 			let sendi: string = '\n'
-			let fns: Array<string> = functionsIn(obj)
+			let fns: Array<string> = _.functionsIn(obj)
 			let _fns: Array<string> = []
-			let keys: Array<string> = difference(keysIn(obj), fns)
+			let keys: Array<string> = _.difference(_.keysIn(obj), fns)
 			let _keys: Array<string> = []
 
 			{
@@ -234,7 +129,7 @@ global.tnsconsole = {
 					}
 				}
 			}
-			keys = difference(keys, _keys)
+			keys = _.difference(keys, _keys)
 
 			{
 				let i: number, len: number = keys.length
@@ -264,7 +159,7 @@ global.tnsconsole = {
 					}
 				}
 			}
-			fns = difference(fns, _fns)
+			fns = _.difference(fns, _fns)
 
 			{
 				let i: number, len: number = fns.length

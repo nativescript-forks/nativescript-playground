@@ -4,26 +4,24 @@
 		"src": "cd src && gulp",
 		"clean": "cd src && gulp clean",
 		"p": "tns livesync android --watch",
-		"i": "tns livesync ios --watch"
+		"i": "tns livesync ios --watch",
+		"lodash": "lodash include=isEmpty,isUndefined,isNull,keysIn,functionsIn,difference,merge,debounce,throttle,pick,omit,isBoolean,isString,capitalize,remove,isFinite,intersectionBy"
 	},
 	"nativescript": {
 		"id": "com.roblav96.playground",
 		"tns-android": {
-			"version": "2.4.0-next-2016-10-19-1286"
+			"version": "next"
 		},
 		"tns-ios": {
-			"version": "2.4.0-2016-10-19-3"
+			"version": "next"
 		}
 	},
 	"dependencies": {
 		"ansicolors": "latest",
 		"ansistyles": "latest",
-		"bluebird": "latest",
 		"eventemitter3": "latest",
-		"lodash": "latest",
-		"moment": "latest",
 		"nativescript-playground-plugin": "file:plugin",
-		"tns-core-modules": "2.4.0-2016-10-19-4474"
+		"tns-core-modules": "next"
 	},
 	"devDependencies": {
 		"tns-platform-declarations": "next",
