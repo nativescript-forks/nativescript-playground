@@ -32,11 +32,10 @@ export function onNavigatedTo(args: NavigatedData) {
 	let page: Page = <Page>args.object
 	let context: MainPage = page.bindingContext
 
-	let wrapper = page.getViewById('chart_wrapper')
-	let size = wrapper.getActualSize()
-
-	let view = page.getViewById('chart')
-	view.ios.frame = CGRectMake(0, 0, size.width, size.height)
+	// let wrapper = page.getViewById('chart_wrapper')
+	// let size = wrapper.getActualSize()
+	// let view = page.getViewById('chart')
+	// view.ios.frame = CGRectMake(0, 0, size.width, size.height)
 
 }
 
@@ -70,74 +69,70 @@ function getRandom(): number {
 	return Math.round(Math.random() * 10)
 }
 
+// export function doit(args: EventData) {
+// 	global.tnsconsole.info('doit')
+// 	let page: Page = <Page>(<View>args.object).page
+// 	let context: MainPage = page.bindingContext
+
+// 	let chart: LineChartView = <any>page.getViewById('chart').ios
+
+// 	let entries: Array<ChartDataEntry> = []
+// 	let i: number, len: number = 10
+// 	for (i = 0; i < len; i++) {
+// 		entries.push(ChartDataEntry.new().initWithXY(getRandom(), getRandom()))
+// 	}
+
+// 	let ds = LineChartDataSet.new().initWithValuesLabel(<any>entries, 'NVDA')
+// 	ds.setColor(new Color('#0ff').ios)
+// 	ds.lineWidth = 5
+
+// 	let d = LineChartData.new().initWithDataSets(<any>[ds])
+// 	chart.setValueForKey(d, 'data')
+// 	chart.notifyDataSetChanged()
+// }
+
+// export function onCreatingView(args) {
+// 	global.tnsconsole.info('onCreatingView')
+
+// 	let chart: LineChartView = LineChartView.new() //.alloc().init()
+// 	chart.noDataText = 'No Datas :('
+// 	chart.descriptionText = 'STOCKS'
+// 	chart.backgroundColor = new Color('#eee').ios
+
+// 	args.view = chart
+// }
+
 export function doit(args: EventData) {
 	global.tnsconsole.info('doit')
 	let page: Page = <Page>(<View>args.object).page
 	let context: MainPage = page.bindingContext
 
-	let chart: LineChartView = <any>page.getViewById('chart').ios
+	let chart: com.github.mikephil.charting.charts.LineChart = <any>page.getViewById('chart').android
 
-	let entries: Array<ChartDataEntry> = []
+	let entries: Array<com.github.mikephil.charting.data.Entry> = []
 	let i: number, len: number = 10
 	for (i = 0; i < len; i++) {
-		entries.push(ChartDataEntry.new().initWithXY(getRandom(), getRandom()))
+		entries.push(new com.github.mikephil.charting.data.Entry(getRandom(), getRandom()))
 	}
 
-	let ds = LineChartDataSet.new().initWithValuesLabel(<any>entries, 'NVDA')
-	ds.setColor(new Color('#0ff').ios)
-	ds.lineWidth = 5
+	let ds = new com.github.mikephil.charting.data.LineDataSet(java.util.Arrays.asList(entries), 'NVDA')
+	ds.setColor(new Color('#0ff').android)
+	ds.setLineWidth(5)
 
-	let d = LineChartData.new().initWithDataSets(<any>[ds])
-	chart.setValueForKey(d, 'data')
-	chart.notifyDataSetChanged()
-
+	let d = new com.github.mikephil.charting.data.LineData(java.util.Arrays.asList([ds]))
+	
+	chart.setData(d)
+	chart.invalidate()
 }
 
 export function onCreatingView(args) {
 	global.tnsconsole.info('onCreatingView')
 
-	let chart: LineChartView = LineChartView.new() //.alloc().init()
-	chart.noDataText = 'No Datas :('
-	chart.descriptionText = 'STOCKS'
-	chart.backgroundColor = new Color('#eee').ios
-
-	// let xs: Array<string> = datas['xaxis']
-	// let ys: Array<number> = []
-	// {
-	// 	let i: number, len: number = datas['data'].length
-	// 	for (i = 0; i < len; i++) {
-	// 		ys.push(datas['data'][i][1])
-	// 	}
-	// }
-
-	// let entries: Array<ChartDataEntry> = []
-	// {
-	// 	let i: number, len: number = xs.length
-	// 	for (i = 0; i < len; i++) {
-	// 		let entry = ChartDataEntry.new().initWithXY(ys[i], i)
-	// 		entries.push(entry)
-	// 	}
-	// }
-
-	// let entries: Array<ChartDataEntry> = []
-	// let i: number, len: number = 10
-	// for (i = 0; i < len; i++) {
-	// 	let entry = ChartDataEntry.new().initWithXY(i * 2, i)
-	// 	entries.push(entry)
-	// }
-
-	// let ds = LineChartDataSet.new().initWithValuesLabel(<any>entries, 'NVDA')
-	// ds.setColor(new Color('#0ff').ios)
-	// ds.lineWidth = 5
-
-	// let d = LineChartData.new().initWithDataSets(<any>[ds])
-
-	// chart.setValueForKey(d, 'data')
-
-	// chart.notifyDataSetChanged()
+	let chart = new com.github.mikephil.charting.charts.LineChart(application.android.context)
+	chart.setNoDataText('No Datas :(')
+	chart.setBackgroundColor(new Color('#eee').android)
 
 	args.view = chart
-
 }
 
 

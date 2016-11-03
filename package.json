@@ -4,7 +4,7 @@
 		"src": "cd src && gulp",
 		"clean": "cd src && gulp clean",
 		"apply": "cd src && gulp apply",
-		"p": "tns livesync android --watch",
+		"a": "tns livesync android --watch",
 		"i": "tns livesync ios --watch",
 		"lodash": "lodash include=isEmpty,isUndefined,isNull,keysIn,functionsIn,difference,merge,debounce,throttle,pick,omit,isBoolean,isString,capitalize,remove,isFinite,intersectionBy"
 	},
