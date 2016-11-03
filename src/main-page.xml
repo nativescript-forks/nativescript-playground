@@ -8,13 +8,14 @@
         </ActionBar>
     </Page.actionBar>
 
-    <GridLayout rows="*">
+    <GridLayout rows="auto,*">
 
         <StackLayout>
-            <StackLayout>
-                <Button class="dev btn btn-huge" text="Do Its" tap="doit" />
-                <Placeholder id="chart" creatingView="onCreatingView" />
-            </StackLayout>
+            <Button class="dev btn btn-huge" text="Do Its" tap="doit" />
+        </StackLayout>
+
+        <StackLayout row="1" id="chart_wrapper" class="dev">
+            <Placeholder id="chart" creatingView="onCreatingView" />
         </StackLayout>
 
     </GridLayout>

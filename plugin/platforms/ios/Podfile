@@ -1,7 +1,8 @@
 # 
 
 use_frameworks!
-pod 'Charts'
+# pod 'Charts'
+pod 'Charts', :git => 'https://github.com/danielgindi/Charts.git'
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
