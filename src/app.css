@@ -1,8 +1,113 @@
 ﻿/**/
 
-button {
-    font-size: 30;
-    horizontal-align: center;
+Page {
+    font-family: '-apple-system', 'Helvetica Neue', 'Roboto Regular', 'Segoe UI', sans-serif;
+}
+
+.t {
+    font-family: '-apple-system', 'Helvetica Neue', 'Roboto Regular', 'Segoe UI', sans-serif;
+    color: #606F7E;
+    font-size: 16;
+}
+
+.t-12 {
+    font-size: 12;
+}
+
+.t-14 {
+    font-size: 14;
+}
+
+.t-15 {
+    font-size: 15;
+}
+
+.t-16 {
+    font-size: 16;
+}
+
+.t-18 {
+    font-size: 18;
+}
+
+.t-20 {
+    font-size: 20;
+}
+
+.t-22 {
+    font-size: 22;
+}
+
+.t-24 {
+    font-size: 24;
+}
+
+.t-25 {
+    font-size: 25;
+}
+
+.t-bold {
+    font-weight: 500;
+}
+
+.t-lighter {
+    font-weight: 300;
+}
+
+.t-italic {
+    font-style: italic;
+}
+
+.t-center {
+    text-align: center;
+}
+
+.hidden {
+    visibility: collapse;
+}
+
+.hr {
+    height: 1;
+    background-color: #AEB1B6;
+    width: 100%;
+}
+
+
+/*
+	BUTTON
+*/
+
+.btn {
+    padding: 10;
+    margin: 0 10;
+}
+
+.btn-small {
+    font-size: 14;
+}
+
+.btn-large {
+    font-size: 20;
+}
+
+.btn-huge {
+    font-size: 28;
+}
+
+.btn-balanced {
+    border-color: #28A54C;
+    background-color: #33CD5F;
+    color: #FFFFFF;
+    border-width: 2;
+    border-radius: 2;
+}
+
+.btn-assertive {
+    border-color: #E42112;
+    background-color: #EF473A;
+    color: #FFFFFF;
+    border-width: 2;
+    border-radius: 2;
 }
 
 

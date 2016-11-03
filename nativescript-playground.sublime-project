@@ -20,7 +20,6 @@
 		"folder_exclude_patterns": [
 			"app/App_Resources/Android/*",
 			"app/App_Resources/iOS/*",
-			"src/typings/vendor",
 			"src/node_modules",
 		],
 		"folder_include_patterns": [
@@ -28,8 +27,8 @@
 			"app/App_Resources",
 			"src",
 			"src/*",
-			"typings",
-			"typings/native",
+			"@types",
+			"@types/native",
 		]
 	}]
 }

@@ -16,7 +16,7 @@
 		"node_modules/tns-core-modules/tns-core-modules.es2016.d.ts",
 		"node_modules/tns-platform-declarations/android.d.ts",
 		"node_modules/tns-platform-declarations/ios.d.ts",
-		"typings/**/*.ts",
+		"@types/**/*.ts",
 		"src/**/*.ts"
 	],
 	"exclude": [

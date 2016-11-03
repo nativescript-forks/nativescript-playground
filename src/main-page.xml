@@ -1,19 +1,21 @@
 <!--  -->
 
-<Page loaded="onLoaded">
+<Page loaded="onLoaded" navigatedTo="onNavigatedTo">
 
     <Page.actionBar>
-        <ActionBar title="Playground">
+        <ActionBar title="Charts Playground">
+
         </ActionBar>
     </Page.actionBar>
 
     <GridLayout rows="*">
 
-        <DockLayout row="0">
-            <StackLayout dock="top">
-                <Button class="button-large" text="Do It" tap="{{ doit }}" />
+        <StackLayout>
+            <StackLayout>
+                <Button class="dev btn btn-huge" text="Do Its" tap="doit" />
+                <Placeholder id="chart" creatingView="onCreatingView" />
             </StackLayout>
-        </DockLayout>
+        </StackLayout>
 
     </GridLayout>
 
