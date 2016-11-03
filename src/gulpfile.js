@@ -103,4 +103,5 @@ gulp.task('default', ['clean:js', 'apply:fonts', 'apply:styles', 'apply:template
 })
 
 gulp.task('clean', ['clean:app', 'clean:js'])
+gulp.task('apply', ['apply:fonts', 'apply:styles', 'apply:templates', 'apply:tsc'])
 

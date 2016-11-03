@@ -1,8 +1,9 @@
 {
 	"scripts": {
-		"init": "npm install && tns install && cd src && npm link typescript && npm link gulp && npm link gulp-typescript && npm install && gulp clean",
+		"init": "npm install && tns install && cd src && npm link typescript && npm link gulp && npm link gulp-typescript && npm install && gulp clean && gulp apply",
 		"src": "cd src && gulp",
 		"clean": "cd src && gulp clean",
+		"apply": "cd src && gulp apply",
 		"p": "tns livesync android --watch",
 		"i": "tns livesync ios --watch",
 		"lodash": "lodash include=isEmpty,isUndefined,isNull,keysIn,functionsIn,difference,merge,debounce,throttle,pick,omit,isBoolean,isString,capitalize,remove,isFinite,intersectionBy"
@@ -10,10 +11,10 @@
 	"nativescript": {
 		"id": "com.roblav96.playground",
 		"tns-android": {
-			"version": "next"
+			"version": "2.5.0-next-2016-11-03-1349"
 		},
 		"tns-ios": {
-			"version": "next"
+			"version": "2.5.0-2016-11-3-1"
 		}
 	},
 	"dependencies": {
@@ -29,7 +30,7 @@
 		"babel-types": "latest",
 		"babylon": "latest",
 		"lazy": "latest",
+		"lodash-cli": "latest",
 		"zone.js": "latest"
 	}
 }
-
