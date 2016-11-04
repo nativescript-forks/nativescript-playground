@@ -12,7 +12,7 @@ import { LineChartDS } from './charts'
 
 export class LineChart extends ContentView {
 
-	public static dataProperty = new Property('data', 'LineChart', new PropertyMetadata(null))
+	public static dsProperty = new Property('ds', 'LineChart', new PropertyMetadata(null))
 
 	private _ios: LineChartView
 
@@ -29,10 +29,10 @@ export class LineChart extends ContentView {
 	}
 
 	get data(): any {
-		return this._getValue(LineChart.dataProperty)
+		return this._getValue(LineChart.dsProperty)
 	}
 	set data(data: any) {
-		this._setValue(LineChart.dataProperty, data)
+		this._setValue(LineChart.dsProperty, data)
 	}
 
 	constructor() {
@@ -49,29 +49,29 @@ export class LineChart extends ContentView {
 		global.tnsconsole.log('setData', ds.label)
 
 		let entries: Array<ChartDataEntry> = []
+		let sxs = ds.xs[0]
 		let i: number, len: number = ds.xs.length
 		for (i = 0; i < len; i++) {
-			entries.push(ChartDataEntry.new().initWithXY(ds.xs[i], ds.ys[i]))
+			entries.push(ChartDataEntry.new().initWithXY(Math.max(sxs, ds.xs[i]), ds.ys[i]))
 		}
-		let dset = LineChartDataSet.new().initWithValuesLabel(<any>entries, 'NVDA')
+		let dset = LineChartDataSet.new().initWithValuesLabel(<any>entries, ds.label)
 
 		let d = LineChartData.new().initWithDataSet(dset)
 		this.chart.setValueForKey(d, 'data')
 		this.chart.notifyDataSetChanged()
-
 	}
 
-	public _onDataPropertyChanged(args: PropertyChangeData) {
+	onDsPropertyChanged(args: PropertyChangeData) {
 		this.setDataSet(args.newValue)
 	}
 
 }
 
-function onDataPropertyChanged(args: PropertyChangeData) {
+function onDsPropertyChanged(args: PropertyChangeData) {
 	let chart = <LineChart>args.object
-	chart._onDataPropertyChanged(args)
+	chart.onDsPropertyChanged(args)
 }
-(<PropertyMetadata>LineChart.dataProperty.metadata).onSetNativeValue = onDataPropertyChanged
+(<PropertyMetadata>LineChart.dsProperty.metadata).onSetNativeValue = onDsPropertyChanged
 
 
 
