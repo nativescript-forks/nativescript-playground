@@ -7,12 +7,12 @@ import { PropertyMetadata } from 'ui/core/proxy'
 import { Property, PropertyMetadataSettings, PropertyChangeData } from 'ui/core/dependency-observable'
 import { screen } from 'platform'
 import { Color } from 'color'
-import { LineChartExt, getLineChartDSEntries } from './charts.extension'
+import { getLineChartDSEntries } from './charts.extension'
 import { LineChartDS } from './charts'
 
 
 
-export class LineChart extends LineChartExt {
+export class LineChart extends ContentView {
 
 	private _androidViewId: number
 	private _android: com.github.mikephil.charting.charts.LineChart
@@ -21,19 +21,12 @@ export class LineChart extends LineChartExt {
 		return this._android
 	}
 
-	private get _nativeView(): com.github.mikephil.charting.charts.LineChart {
+	public get _nativeView(): com.github.mikephil.charting.charts.LineChart {
 		return this._android
 	}
 
 	get android(): com.github.mikephil.charting.charts.LineChart {
 		return this._android
-	}
-
-	get ds(): LineChartDS {
-		return this._getValue(LineChart.dsProperty)
-	}
-	set ds(ds: LineChartDS) {
-		this._setValue(LineChart.dsProperty, ds)
 	}
 
 	constructor() {
@@ -51,12 +44,15 @@ export class LineChart extends LineChartExt {
 		this._android.setId(this._androidViewId)
 
 		this.chart.setNoDataText('can i haz datas plez?')
+		// this.chart.setDescriptionTextSize()
+		
+		global.tnsconsole.keys('this.chart', this.chart)
 	}
 
 	setDataSet(ds: LineChartDS) {
 		global.tnsconsole.log('setData', ds.label)
 
-		let entries = ChartExt.getLineChartDSEntries<com.github.mikephil.charting.data.Entry>(ds)
+		let entries = getLineChartDSEntries<com.github.mikephil.charting.data.Entry>(ds)
 		let dset = new com.github.mikephil.charting.data.LineDataSet(java.util.Arrays.asList(entries), ds.label)
 
 		let d = new com.github.mikephil.charting.data.LineData()
@@ -65,6 +61,15 @@ export class LineChart extends LineChartExt {
 		this.chart.invalidate()
 	}
 
+
+
+	public static dsProperty = new Property('ds', 'LineChart', new PropertyMetadata(null))
+	get ds(): LineChartDS {
+		return this._getValue(LineChart.dsProperty)
+	}
+	set ds(ds: LineChartDS) {
+		this._setValue(LineChart.dsProperty, ds)
+	}
 }
 
 function onDsPropertyChanged(args: PropertyChangeData) {
@@ -72,6 +77,8 @@ function onDsPropertyChanged(args: PropertyChangeData) {
 	chart.setDataSet(args.newValue)
 }
 (<PropertyMetadata>LineChart.dsProperty.metadata).onSetNativeValue = onDsPropertyChanged
+
+
 
 
 

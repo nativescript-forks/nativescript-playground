@@ -6,14 +6,12 @@ import { PropertyMetadata } from 'ui/core/proxy'
 import { Property, PropertyMetadataSettings, PropertyChangeData } from 'ui/core/dependency-observable'
 import { screen } from 'platform'
 import { Color } from 'color'
-import * as ChartExt from './charts.extension'
+import { getLineChartDSEntries } from './charts.extension'
 import { LineChartDS } from './charts'
 
 
 
 export class LineChart extends ContentView {
-
-	public static dsProperty = new Property('ds', 'LineChart', new PropertyMetadata(null))
 
 	private _ios: LineChartView
 
@@ -23,17 +21,6 @@ export class LineChart extends ContentView {
 
 	get ios(): LineChartView {
 		return this._ios
-	}
-
-	get _nativeView(): LineChartView {
-		return this._ios
-	}
-
-	get ds(): LineChartDS {
-		return this._getValue(LineChart.dsProperty)
-	}
-	set ds(ds: LineChartDS) {
-		this._setValue(LineChart.dsProperty, ds)
 	}
 
 	constructor() {
@@ -49,14 +36,23 @@ export class LineChart extends ContentView {
 	setDataSet(ds: LineChartDS) {
 		global.tnsconsole.log('setData', ds.label)
 
-		let entries = ChartExt.getLineChartDSEntries<ChartDataEntry>(ds)
+		let entries = getLineChartDSEntries<ChartDataEntry>(ds)
 		let dset = LineChartDataSet.new().initWithValuesLabel(<any>entries, ds.label)
 
 		let d = LineChartData.new().initWithDataSet(dset)
 		this.chart.setValueForKey(d, 'data')
 		this.chart.notifyDataSetChanged()
 	}
+	
+	
 
+	public static dsProperty = new Property('ds', 'LineChart', new PropertyMetadata(null))
+	get ds(): LineChartDS {
+		return this._getValue(LineChart.dsProperty)
+	}
+	set ds(ds: LineChartDS) {
+		this._setValue(LineChart.dsProperty, ds)
+	}
 }
 
 function onDsPropertyChanged(args: PropertyChangeData) {

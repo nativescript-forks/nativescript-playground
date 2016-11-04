@@ -4,15 +4,7 @@ import * as application from 'application'
 import { ContentView } from 'ui/content-view'
 import { PropertyMetadata } from 'ui/core/proxy'
 import { Property, PropertyMetadataSettings, PropertyChangeData } from 'ui/core/dependency-observable'
-import { LineChartDS } from './charts'
-
-
-
-export class LineChartExt extends ContentView {
-
-	public static dsProperty = new Property('ds', 'LineChart', new PropertyMetadata(null))
-
-}
+import { LineChartDS, LineChart } from './charts'
 
 
 

@@ -67,10 +67,6 @@ export function setdata(args: EventData) {
 	let context: MainPage = page.bindingContext
 
 	context.ds = buildRandomDS()
-
-	// let chart = page.getViewById<LineChart>('chart')
-	// chart.setDataSet({ label: 'NVDA', xs, ys, })
-
 }
 
 
