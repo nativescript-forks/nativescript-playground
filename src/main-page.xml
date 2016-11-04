@@ -1,6 +1,6 @@
 <!--  -->
 
-<Page loaded="onLoaded" navigatedTo="onNavigatedTo">
+<Page loaded="onLoaded" navigatedTo="onNavigatedTo" xmlns:Charts="./charts">
 
     <Page.actionBar>
         <ActionBar title="Charts Playground">
@@ -11,12 +11,10 @@
     <GridLayout rows="auto,*">
 
         <StackLayout>
-            <Button class="dev btn btn-huge" text="Do Its" tap="doit" />
+            <Button class="btn btn-huge" text="Set Data" tap="setdata" />
         </StackLayout>
 
-        <StackLayout row="1" id="chart_wrapper" class="dev">
-            <Placeholder id="chart" creatingView="onCreatingView" />
-        </StackLayout>
+        <Charts:ChartView row="1" id="chart" class="dev" />
 
     </GridLayout>
 

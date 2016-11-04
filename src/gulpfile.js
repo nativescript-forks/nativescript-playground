@@ -28,7 +28,9 @@ gulp.task('apply:templates', () => {
 	return merge(gulp.src([
 		'./**/*.xml',
 		'./**/*.html',
-		'!./node_modules/**/*'
+		'./**/*.json',
+		'!./package.json',
+		'!./node_modules/**/*',
 	]).pipe(gulp.dest('../app')))
 })
 
@@ -36,7 +38,9 @@ gulp.task('watch:templates', () => {
 	return gulp.watch([
 		'./**/*.xml',
 		'./**/*.html',
-		'!./node_modules/**/*'
+		'./**/*.json',
+		'!./package.json',
+		'!./node_modules/**/*',
 	], ['apply:templates'])
 })
 

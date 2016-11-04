@@ -1,0 +1,12 @@
+{
+	"name": "charts",
+	"version": "0.0.1",
+	"main": "charts.js",
+	"nativescript": {
+		"platforms": {
+			"ios": "2.0.0",
+			"android": "2.0.0"
+		}
+	}
+}
+

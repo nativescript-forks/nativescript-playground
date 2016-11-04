@@ -9,6 +9,7 @@ import { Color } from 'color'
 import { request, Headers } from 'http'
 import { Placeholder, CreateViewEventData } from 'ui/placeholder'
 import { BOOT } from './main'
+import { ChartView } from './charts/charts'
 
 
 
@@ -32,9 +33,9 @@ export function onNavigatedTo(args: NavigatedData) {
 	let page: Page = <Page>args.object
 	let context: MainPage = page.bindingContext
 
-	let wrapper = page.getViewById('chart_wrapper')
-	let size = wrapper.getActualSize()
-	let view = page.getViewById('chart')
+	// let wrapper = page.getViewById('chart_wrapper')
+	// let size = wrapper.getActualSize()
+	// let view = page.getViewById('chart')
 
 	// view.ios.frame = CGRectMake(0, 0, size.width, size.height)
 	// let vw = view.android as com.github.mikephil.charting.charts.LineChart
@@ -43,35 +44,47 @@ export function onNavigatedTo(args: NavigatedData) {
 
 }
 
-
-
-interface SandboxImpl {
-	doit?()
-	dothis?()
-	andthis?()
+function getRandom(i: number): number {
+	return Math.round(Math.random() * 10 + (i * 10))
 }
 
-class SandboxExt implements SandboxImpl {
+export function setdata(args: EventData) {
+	global.tnsconsole.info('setdata')
+	let page: Page = <Page>(<View>args.object).page
+	let context: MainPage = page.bindingContext
 
-	constructor() {
-
+	let xs: Array<number> = []
+	let ys: Array<number> = []
+	let i: number, len: number = 10
+	for (i = 0; i < len; i++) {
+		xs.push(getRandom(i))
+		ys.push(getRandom(i))
 	}
 
+	let chart: ChartView = page.getViewById<ChartView>('chart')
+	chart.setData(xs, ys, 'NVDA')
+
 }
 
-class Sandbox extends SandboxExt implements SandboxImpl {
+export function updd(args: EventData) {
+	global.tnsconsole.info('updd')
+	let page: Page = <Page>(<View>args.object).page
+	let context: MainPage = page.bindingContext
 
-	constructor() {
-		super()
+	let xs: Array<number> = []
+	let ys: Array<number> = []
+	let i: number, len: number = 10
+	for (i = 0; i < len; i++) {
+		xs.push(getRandom(i))
+		ys.push(getRandom(i))
 	}
 
+	let chart: ChartView = page.getViewById<ChartView>('chart')
+	chart.updateData(xs, ys, 'NVDA')
+
 }
 
 
-
-function getRandom(): number {
-	return Math.round(Math.random() * 10)
-}
 
 // export function doit(args: EventData) {
 // 	global.tnsconsole.info('doit')
@@ -106,40 +119,40 @@ function getRandom(): number {
 // 	args.view = chart
 // }
 
-export function doit(args: EventData) {
-	global.tnsconsole.info('doit')
-	let page: Page = <Page>(<View>args.object).page
-	let context: MainPage = page.bindingContext
+// export function doit(args: EventData) {
+// 	global.tnsconsole.info('doit')
+// 	let page: Page = <Page>(<View>args.object).page
+// 	let context: MainPage = page.bindingContext
 
-	let chart: com.github.mikephil.charting.charts.LineChart = <any>page.getViewById('chart').android
+// 	let chart: com.github.mikephil.charting.charts.LineChart = <any>page.getViewById('chart').android
 
-	let entries: Array<com.github.mikephil.charting.data.Entry> = []
-	let i: number, len: number = 10
-	for (i = 0; i < len; i++) {
-		entries.push(new com.github.mikephil.charting.data.Entry(getRandom(), getRandom()))
-	}
+// 	let entries: Array<com.github.mikephil.charting.data.Entry> = []
+// 	let i: number, len: number = 10
+// 	for (i = 0; i < len; i++) {
+// 		entries.push(new com.github.mikephil.charting.data.Entry(getRandom(), getRandom()))
+// 	}
 
-	let ds = new com.github.mikephil.charting.data.LineDataSet(java.util.Arrays.asList(entries), 'NVDA')
-	ds.setColor(new Color('#0ff').android)
-	ds.setLineWidth(5)
+// 	let ds = new com.github.mikephil.charting.data.LineDataSet(java.util.Arrays.asList(entries), 'NVDA')
+// 	ds.setColor(new Color('#0ff').android)
+// 	ds.setLineWidth(5)
 
-	let dss = Array.create(com.github.mikephil.charting.data.LineDataSet, 1)
-	dss[0] = ds
+// 	let dss = Array.create(com.github.mikephil.charting.data.LineDataSet, 1)
+// 	dss[0] = ds
 
-	let d = new com.github.mikephil.charting.data.LineData(dss)
-	chart.setData(d)
-	chart.invalidate()
-}
+// 	let d = new com.github.mikephil.charting.data.LineData(dss)
+// 	chart.setData(d)
+// 	chart.invalidate()
+// }
 
-export function onCreatingView(args) {
-	global.tnsconsole.info('onCreatingView')
+// export function onCreatingView(args) {
+// 	global.tnsconsole.info('onCreatingView')
 
-	let chart = new com.github.mikephil.charting.charts.LineChart(application.android.context)
-	chart.setNoDataText('No Datas :(')
-	chart.setBackgroundColor(new Color('#eee').android)
+// 	let chart = new com.github.mikephil.charting.charts.LineChart(application.android.context)
+// 	chart.setNoDataText('No Datas :(')
+// 	chart.setBackgroundColor(new Color('#eee').android)
 
-	args.view = chart
-}
+// 	args.view = chart
+// }
 
 
 
