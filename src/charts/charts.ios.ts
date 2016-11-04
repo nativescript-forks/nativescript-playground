@@ -6,7 +6,7 @@ import { PropertyMetadata } from 'ui/core/proxy'
 import { Property, PropertyMetadataSettings, PropertyChangeData } from 'ui/core/dependency-observable'
 import { screen } from 'platform'
 import { Color } from 'color'
-import * as ChartUtils from './charts.utils'
+import * as ChartExt from './charts.extension'
 import { LineChartDS } from './charts'
 
 
@@ -49,7 +49,7 @@ export class LineChart extends ContentView {
 	setDataSet(ds: LineChartDS) {
 		global.tnsconsole.log('setData', ds.label)
 
-		let entries = ChartUtils.getLineChartDSEntries<ChartDataEntry>(ds)
+		let entries = ChartExt.getLineChartDSEntries<ChartDataEntry>(ds)
 		let dset = LineChartDataSet.new().initWithValuesLabel(<any>entries, ds.label)
 
 		let d = LineChartData.new().initWithDataSet(dset)

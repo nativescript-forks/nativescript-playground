@@ -7,14 +7,12 @@ import { PropertyMetadata } from 'ui/core/proxy'
 import { Property, PropertyMetadataSettings, PropertyChangeData } from 'ui/core/dependency-observable'
 import { screen } from 'platform'
 import { Color } from 'color'
-import * as ChartExt from './charts.extension'
+import { LineChartExt, getLineChartDSEntries } from './charts.extension'
 import { LineChartDS } from './charts'
 
 
 
-export class LineChart extends ContentView {
-
-	public static dsProperty = new Property('ds', 'LineChart', new PropertyMetadata(null))
+export class LineChart extends LineChartExt {
 
 	private _androidViewId: number
 	private _android: com.github.mikephil.charting.charts.LineChart
@@ -23,11 +21,11 @@ export class LineChart extends ContentView {
 		return this._android
 	}
 
-	get android(): com.github.mikephil.charting.charts.LineChart {
+	private get _nativeView(): com.github.mikephil.charting.charts.LineChart {
 		return this._android
 	}
 
-	private get _nativeView(): com.github.mikephil.charting.charts.LineChart {
+	get android(): com.github.mikephil.charting.charts.LineChart {
 		return this._android
 	}
 
