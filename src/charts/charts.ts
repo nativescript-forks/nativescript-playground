@@ -6,15 +6,15 @@ import { ContentView } from 'ui/content-view'
 
 
 export declare interface LineChartDS {
+	label: string
 	xs: Array<number>
 	ys: Array<number>
-	label: string
 }
 
 export declare class LineChart extends ContentView {
 	android: com.github.mikephil.charting.charts.LineChart
 	ios: LineChartView
-	setDataSet(ds: LineChartDS): void
+	setDataSets(dss: Array<LineChartDS>): void
 }
 
 

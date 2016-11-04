@@ -33,7 +33,7 @@ export class LineChart extends ContentView {
 		this.chart.backgroundColor = new Color('#eee').ios
 	}
 
-	setDataSet(ds: LineChartDS) {
+	setDataSets(ds: LineChartDS) {
 		global.tnsconsole.log('setData', ds.label)
 
 		let entries = getLineChartDSEntries<ChartDataEntry>(ds)
@@ -57,7 +57,7 @@ export class LineChart extends ContentView {
 
 function onDsPropertyChanged(args: PropertyChangeData) {
 	let chart = <LineChart>args.object
-	chart.setDataSet(args.newValue)
+	chart.setDataSets(args.newValue)
 }
 (<PropertyMetadata>LineChart.dsProperty.metadata).onSetNativeValue = onDsPropertyChanged
 

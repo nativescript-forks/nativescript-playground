@@ -27,13 +27,13 @@ export function onLoaded(args: EventData) {
 
 class MainPage extends Observable {
 
-	private _ds: LineChartDS
-	get ds(): LineChartDS {
-		return this._ds
+	private _dss: Array<LineChartDS>
+	get dss(): Array<LineChartDS> {
+		return this._dss
 	}
-	set ds(ds: LineChartDS) {
-		this._ds = ds
-		this.notifyPropertyChange('ds', ds)
+	set dss(dss: Array<LineChartDS>) {
+		this._dss = dss
+		this.notifyPropertyChange('dss', dss)
 	}
 
 }
@@ -42,15 +42,19 @@ export function onNavigatedTo(args: NavigatedData) {
 	let page: Page = <Page>args.object
 	let context: MainPage = page.bindingContext
 
-	context.ds = buildRandomDS()
+	// let dss: Array<LineChartDS> = []
+	// dss.push(buildRandomDS('NVDA'))
+	// dss.push(buildRandomDS('AMD'))
+	// dss.push(buildRandomDS('DELL'))
+	// context.dss = dss
 }
 
 function getRandom(i: number): number {
-	// return Math.round(Math.random() * 10 + (i * 10))
-	return Math.round(Math.random() * 10)
+	return Math.round(Math.random() * 10 + (i * 10))
+	// return Math.round(Math.random() * 10)
 }
 
-function buildRandomDS(): LineChartDS {
+function buildRandomDS(label: string): LineChartDS {
 	let xs: Array<number> = []
 	let ys: Array<number> = []
 	let i: number, len: number = 10
@@ -58,7 +62,7 @@ function buildRandomDS(): LineChartDS {
 		xs.push(getRandom(i))
 		ys.push(getRandom(i))
 	}
-	return { label: 'NVDA', xs, ys, }
+	return { label, xs, ys, }
 }
 
 export function setdata(args: EventData) {
@@ -66,7 +70,26 @@ export function setdata(args: EventData) {
 	let page: Page = <Page>(<View>args.object).page
 	let context: MainPage = page.bindingContext
 
-	context.ds = buildRandomDS()
+	let dss: Array<LineChartDS> = []
+	dss.push(buildRandomDS('NVDA'))
+	dss.push(buildRandomDS('AMD'))
+	dss.push(buildRandomDS('DELL'))
+	context.dss = dss
+}
+
+export function onChartLoaded(args: EventData) {
+	let chart: LineChart = <LineChart>args.object
+	global.tnsconsole.dump('chart', chart)
+	
+	global.tnsconsole.dump('chart.page.bindingContext', chart.page.bindingContext)
+	global.tnsconsole.log('chart.page.bindingContext.dss', chart.page.bindingContext.dss)
+	
+	// let dss: Array<LineChartDS> = []
+	// dss.push(buildRandomDS('NVDA'))
+	// dss.push(buildRandomDS('AMD'))
+	// dss.push(buildRandomDS('DELL'))
+	// chart.page.bindingContext.dss = dss
+
 }
 
 

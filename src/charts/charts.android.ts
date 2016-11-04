@@ -35,48 +35,59 @@ export class LineChart extends ContentView {
 	}
 
 	_createUI() {
-		global.tnsconsole.info('LineChart > _createUI')
-
 		this._android = new com.github.mikephil.charting.charts.LineChart(this._context)
 		if (!this._androidViewId) {
 			this._androidViewId = android.view.View.generateViewId()
 		}
 		this._android.setId(this._androidViewId)
 
+		this.chart.setHardwareAccelerationEnabled(true)
 		this.chart.setNoDataText('can i haz datas plez?')
-		// this.chart.setDescriptionTextSize()
-		
-		global.tnsconsole.keys('this.chart', this.chart)
+
+		let desc = new com.github.mikephil.charting.components.Description()
+		desc.setText('')
+		// desc.setTextSize(20)
+		this.chart.setDescription(desc)
+
+		let ledg = this.chart.getLegend()
+		ledg.setTextSize(20)
+		ledg.setFormSize(16)
+		this.chart.getAxisLeft().setTextSize(14)
+		this.chart.getAxisRight().setTextSize(14)
+		this.chart.getXAxis().setTextSize(14)
 	}
 
-	setDataSet(ds: LineChartDS) {
-		global.tnsconsole.log('setData', ds.label)
-
-		let entries = getLineChartDSEntries<com.github.mikephil.charting.data.Entry>(ds)
-		let dset = new com.github.mikephil.charting.data.LineDataSet(java.util.Arrays.asList(entries), ds.label)
-
+	setDataSets(dss: Array<LineChartDS>) {
 		let d = new com.github.mikephil.charting.data.LineData()
-		d.addDataSet(dset)
+		let i: number, len: number = dss.length
+		for (i = 0; i < len; i++) {
+			let entries = getLineChartDSEntries<com.github.mikephil.charting.data.Entry>(dss[i])
+			let dset = new com.github.mikephil.charting.data.LineDataSet(java.util.Arrays.asList(entries), dss[i].label)
+			dset.setColor(com.github.mikephil.charting.utils.ColorTemplate.MATERIAL_COLORS[i])
+			dset.setValueTextSize(8)
+			d.addDataSet(dset)
+		}
 		this.chart.setData(d)
 		this.chart.invalidate()
+		this.chart.animateXY(500, 500)
 	}
 
 
 
-	public static dsProperty = new Property('ds', 'LineChart', new PropertyMetadata(null))
-	get ds(): LineChartDS {
-		return this._getValue(LineChart.dsProperty)
+	public static dssProperty = new Property('dss', 'LineChart', new PropertyMetadata([]))
+	get dss(): Array<LineChartDS> {
+		return this._getValue(LineChart.dssProperty)
 	}
-	set ds(ds: LineChartDS) {
-		this._setValue(LineChart.dsProperty, ds)
+	set dss(dss: Array<LineChartDS>) {
+		this._setValue(LineChart.dssProperty, dss)
 	}
 }
 
-function onDsPropertyChanged(args: PropertyChangeData) {
+function onDssPropertyChanged(args: PropertyChangeData) {
 	let chart = <LineChart>args.object
-	chart.setDataSet(args.newValue)
+	chart.setDataSets(args.newValue)
 }
-(<PropertyMetadata>LineChart.dsProperty.metadata).onSetNativeValue = onDsPropertyChanged
+(<PropertyMetadata>LineChart.dssProperty.metadata).onSetNativeValue = onDssPropertyChanged
 
 
 
