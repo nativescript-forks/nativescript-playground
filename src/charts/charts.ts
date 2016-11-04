@@ -14,7 +14,7 @@ export declare interface LineChartDS {
 export declare class LineChart extends ContentView {
 	android: com.github.mikephil.charting.charts.LineChart
 	ios: LineChartView
-	setData(xs: Array<number>, ys: Array<number>, label: string): void
+	setDataSet(ds: LineChartDS): void
 }
 
 

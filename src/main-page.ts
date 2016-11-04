@@ -42,6 +42,7 @@ export function onNavigatedTo(args: NavigatedData) {
 	let page: Page = <Page>args.object
 	let context: MainPage = page.bindingContext
 
+	context.ds = buildRandomDS()
 }
 
 function getRandom(i: number): number {
@@ -49,11 +50,7 @@ function getRandom(i: number): number {
 	return Math.round(Math.random() * 10)
 }
 
-export function setdata(args: EventData) {
-	global.tnsconsole.info('setdata')
-	let page: Page = <Page>(<View>args.object).page
-	let context: MainPage = page.bindingContext
-
+function buildRandomDS(): LineChartDS {
 	let xs: Array<number> = []
 	let ys: Array<number> = []
 	let i: number, len: number = 10
@@ -61,8 +58,18 @@ export function setdata(args: EventData) {
 		xs.push(getRandom(i))
 		ys.push(getRandom(i))
 	}
+	return { label: 'NVDA', xs, ys, }
+}
 
-	context.ds = { label: 'NVDA', xs, ys, }
+export function setdata(args: EventData) {
+	global.tnsconsole.info('setdata')
+	let page: Page = <Page>(<View>args.object).page
+	let context: MainPage = page.bindingContext
+
+	context.ds = buildRandomDS()
+
+	// let chart = page.getViewById<LineChart>('chart')
+	// chart.setDataSet({ label: 'NVDA', xs, ys, })
 
 }
 
