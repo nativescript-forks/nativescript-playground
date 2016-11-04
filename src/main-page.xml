@@ -14,7 +14,7 @@
             <Button class="btn btn-huge" text="Set Data" tap="setdata" />
         </StackLayout>
 
-        <Charts:ChartView row="1" id="chart" class="dev" />
+        <Charts:LineChart row="1" id="chart" ds="{{ ds }}" />
 
     </GridLayout>
 

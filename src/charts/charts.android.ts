@@ -10,7 +10,7 @@ import { Color } from 'color'
 
 
 
-export class ChartView extends ContentView {
+export class LineChart extends ContentView {
 
 	private _androidViewId: number
 	private _android: com.github.mikephil.charting.charts.LineChart
@@ -18,11 +18,6 @@ export class ChartView extends ContentView {
 	private _d: com.github.mikephil.charting.data.LineData = new com.github.mikephil.charting.data.LineData()
 	// private _dsets: Array<com.github.mikephil.charting.data.LineDataSet> = []
 	private _dsets: any = {}
-
-	constructor() {
-		super()
-		global.tnsconsole.info('ChartView > constructor')
-	}
 
 	private get chart(): com.github.mikephil.charting.charts.LineChart {
 		return this._android
@@ -36,8 +31,13 @@ export class ChartView extends ContentView {
 		return this._android
 	}
 
+	constructor() {
+		super()
+		global.tnsconsole.info('LineChart > constructor')
+	}
+
 	_createUI() {
-		global.tnsconsole.info('ChartView > _createUI')
+		global.tnsconsole.info('LineChart > _createUI')
 
 		this._android = new com.github.mikephil.charting.charts.LineChart(this._context)
 		if (!this._androidViewId) {

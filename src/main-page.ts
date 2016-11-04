@@ -9,7 +9,7 @@ import { Color } from 'color'
 import { request, Headers } from 'http'
 import { Placeholder, CreateViewEventData } from 'ui/placeholder'
 import { BOOT } from './main'
-import { ChartView } from './charts/charts'
+import { LineChart, LineChartDS } from './charts/charts'
 
 
 
@@ -27,20 +27,20 @@ export function onLoaded(args: EventData) {
 
 class MainPage extends Observable {
 
+	private _ds: LineChartDS
+	get ds(): LineChartDS {
+		return this._ds
+	}
+	set ds(ds: LineChartDS) {
+		this._ds = ds
+		this.notifyPropertyChange('ds', ds)
+	}
+
 }
 
 export function onNavigatedTo(args: NavigatedData) {
 	let page: Page = <Page>args.object
 	let context: MainPage = page.bindingContext
-
-	// let wrapper = page.getViewById('chart_wrapper')
-	// let size = wrapper.getActualSize()
-	// let view = page.getViewById('chart')
-
-	// view.ios.frame = CGRectMake(0, 0, size.width, size.height)
-	// let vw = view.android as com.github.mikephil.charting.charts.LineChart
-	// vw.layout(0, 0, size.width, size.height)
-	// vw.setLayoutParams(new android.view.ViewGroup.LayoutParams(size.width, size.height))
 
 }
 
@@ -61,28 +61,45 @@ export function setdata(args: EventData) {
 		ys.push(getRandom(i))
 	}
 
-	let chart: ChartView = page.getViewById<ChartView>('chart')
-	chart.setData(xs, ys, 'NVDA')
+	context.ds = { label: 'NVDA', xs, ys, }
 
 }
 
-export function updd(args: EventData) {
-	global.tnsconsole.info('updd')
-	let page: Page = <Page>(<View>args.object).page
-	let context: MainPage = page.bindingContext
 
-	let xs: Array<number> = []
-	let ys: Array<number> = []
-	let i: number, len: number = 10
-	for (i = 0; i < len; i++) {
-		xs.push(getRandom(i))
-		ys.push(getRandom(i))
-	}
 
-	let chart: ChartView = page.getViewById<ChartView>('chart')
-	chart.updateData(xs, ys, 'NVDA')
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export function updd(args: EventData) {
+// 	global.tnsconsole.info('updd')
+// 	let page: Page = <Page>(<View>args.object).page
+// 	let context: MainPage = page.bindingContext
+
+// 	let xs: Array<number> = []
+// 	let ys: Array<number> = []
+// 	let i: number, len: number = 10
+// 	for (i = 0; i < len; i++) {
+// 		xs.push(getRandom(i))
+// 		ys.push(getRandom(i))
+// 	}
+
+// 	let chart: LineChart = page.getViewById<LineChart>('chart')
+// 	chart.updateData(xs, ys, 'NVDA')
+
+// }
 
 
 
