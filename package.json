@@ -10,10 +10,10 @@
 	"nativescript": {
 		"id": "com.roblav96.playground",
 		"tns-android": {
-			"version": "next"
+			"version": "2.5.0-next-2016-11-07-1352"
 		},
 		"tns-ios": {
-			"version": "next"
+			"version": "2.5.0-2016-11-3-2"
 		}
 	},
 	"dependencies": {
@@ -32,4 +32,3 @@
 		"zone.js": "latest"
 	}
 }
-

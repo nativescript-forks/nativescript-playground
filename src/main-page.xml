@@ -3,18 +3,15 @@
 <Page loaded="onLoaded">
 
     <Page.actionBar>
-        <ActionBar title="Playground">
+        <ActionBar title="ASDK Playground">
+
         </ActionBar>
     </Page.actionBar>
 
     <GridLayout rows="*">
-
-        <DockLayout row="0">
-            <StackLayout dock="top">
-                <Button class="button-large" text="Do It" tap="{{ doit }}" />
-            </StackLayout>
-        </DockLayout>
-
+        <StackLayout id="stack" dock="top">
+            <Button class="button-large" text="Do It" tap="doit" />
+        </StackLayout>
     </GridLayout>
 
 </Page>
