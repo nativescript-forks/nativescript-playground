@@ -1,0 +1,18 @@
+<!--  -->
+
+<ActionBar title="Next1">
+    <NavigationButton text="Back" android.systemIcon="ic_menu_back" (tap)="tapBack()"></NavigationButton>
+</ActionBar>
+
+<GridLayout rows="*">
+
+    <StackLayout style.margin="0 40" verticalAlignment="center">
+        <Label class="t t-20 t-bold t-center" text="Just a little more info," textWrap="true"></Label>
+        <Label class="t t-center" text="This should be all we need to fight for you." textWrap="true"></Label>
+        <TextField id="input_address" hint="Billing Address" [text]="address"></TextField>
+        <TextField id="input_email" keyboardType="email" hint="Email" [text]="email"></TextField>
+        <Button class="button-large" text="Next" (tap)="tapNext()"></Button>
+    </StackLayout>
+
+</GridLayout>
+

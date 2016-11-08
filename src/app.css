@@ -1,8 +1,199 @@
 ﻿/**/
 
-button {
+
+/*@import '~/css/core.light.css';
+@import '~/css/styles.css';*/
+
+
+/**/
+
+Page {
+    font-family: '-apple-system', 'Helvetica Neue', 'Roboto Regular', 'Segoe UI', sans-serif;
+    background-color: white;
+}
+
+Page > ActionBar {
+    /*background-color: #94D55B;*/
+    background-color: #6E9E43;
+    color: white;
+}
+
+.t {
+    font-family: '-apple-system', 'Helvetica Neue', 'Roboto Regular', 'Segoe UI', sans-serif;
+    color: #606F7E;
+    font-size: 16;
+}
+
+.t-12 {
+    font-size: 12;
+}
+
+.t-14 {
+    font-size: 14;
+}
+
+.t-15 {
+    font-size: 15;
+}
+
+.t-16 {
+    font-size: 16;
+}
+
+.t-18 {
+    font-size: 18;
+}
+
+.t-20 {
+    font-size: 20;
+}
+
+.t-22 {
+    font-size: 22;
+}
+
+.t-24 {
+    font-size: 24;
+}
+
+.t-25 {
+    font-size: 25;
+}
+
+.t-27 {
+    font-size: 27;
+}
+
+.t-28 {
+    font-size: 28;
+}
+
+.t-30 {
     font-size: 30;
-    horizontal-align: center;
+}
+
+.t-bold {
+    font-weight: 500;
+}
+
+.t-lighter {
+    font-weight: 300;
+}
+
+.t-italic {
+    font-style: italic;
+}
+
+.t-center {
+    text-align: center;
+}
+
+.list-view-item-wrapper {
+    padding: 10;
+}
+
+.list-view-item-wrapper > Image {
+    height: 64;
+    width: 64;
+    margin-right: 10;
+}
+
+Image.checkbox {
+    height: 20;
+    width: 20;
+    margin-right: 10;
+}
+
+.hidden {
+    visibility: collapse;
+}
+
+.border-full {
+    border-width: 1;
+    border-color: #94D55B;
+}
+
+.hr {
+    height: 1;
+    background-color: #AEB1B6;
+    width: 100%;
+}
+
+
+/*
+	CARD
+*/
+
+.card {
+    background-color: #FFFFFF;
+    margin: 15;
+}
+
+.card > * {
+    margin: 15;
+}
+
+
+/*
+	CHIP
+*/
+
+.chip {
+    height: 30;
+    border-radius: 15;
+    background-color: #EEEFF0;
+    margin-right: 10;
+    margin-bottom: 5;
+    border-color: #CED0D3;
+    border-width: 1;
+}
+
+.chip > Image {
+    width: 30;
+    height: 30;
+}
+
+.chip > Label {
+    margin-right: 10;
+    margin-left: 5;
+}
+
+
+/*
+	BUTTON
+*/
+
+.btn {
+    padding: 10;
+    margin: 0 10;
+}
+
+.btn-small {
+    font-size: 14;
+}
+
+.btn-large {
+    font-size: 20;
+}
+
+.btn-huge {
+    font-size: 28;
+}
+
+.btn-balanced {
+    border-color: #28A54C;
+    background-color: #33CD5F;
+    color: #FFFFFF;
+    border-width: 2;
+    border-radius: 2;
+}
+
+.btn-assertive {
+    border-color: #E42112;
+    background-color: #EF473A;
+    color: #FFFFFF;
+    border-width: 2;
+    border-radius: 2;
 }
 
 

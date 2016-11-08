@@ -3,17 +3,17 @@
 		"init": "npm install && tns install && cd src && npm link typescript && npm link gulp && npm link gulp-typescript && npm install && gulp clean",
 		"src": "cd src && gulp",
 		"clean": "cd src && gulp clean",
-		"p": "tns livesync android --watch",
+		"a": "tns livesync android --watch",
 		"i": "tns livesync ios --watch",
 		"lodash": "lodash include=isEmpty,isUndefined,isNull,keysIn,functionsIn,difference,merge,debounce,throttle,pick,omit,isBoolean,isString,capitalize,remove,isFinite,intersectionBy"
 	},
 	"nativescript": {
 		"id": "com.roblav96.playground",
 		"tns-android": {
-			"version": "next"
+			"version": "2.5.0-next-2016-11-07-1357"
 		},
 		"tns-ios": {
-			"version": "next"
+			"version": "2.5.0-2016-11-3-2"
 		}
 	},
 	"dependencies": {
@@ -24,22 +24,21 @@
 		"@angular/http": "latest",
 		"@angular/platform-browser": "latest",
 		"@angular/platform-browser-dynamic": "latest",
-		"@angular/platform-server": "latest",
 		"@angular/router": "latest",
 		"ansicolors": "latest",
 		"ansistyles": "latest",
 		"eventemitter3": "latest",
-		"nativescript-playground-plugin": "file:plugin",
+		"nativescript-angular": "latest",
+		"reflect-metadata": "latest",
 		"rxjs": "5.0.0-beta.12",
 		"tns-core-modules": "next"
 	},
 	"devDependencies": {
+		"babel-traverse": "6.18.0",
+		"babel-types": "6.18.0",
+		"babylon": "6.13.1",
+		"lazy": "1.0.11",
 		"tns-platform-declarations": "next",
-		"babel-traverse": "latest",
-		"babel-types": "latest",
-		"babylon": "latest",
-		"lazy": "latest",
-		"zone.js": "latest"
+		"zone.js": "~0.6.21"
 	}
 }
-

@@ -1,0 +1,26 @@
+<!--  -->
+
+<ActionBar title="GetHuman">
+
+</ActionBar>
+
+<GridLayout rows="auto,*,auto">
+
+    <StackLayout style.margin="20 40 0 40">
+        <Label class="t t-20 t-bold t-center" text="We deal with “customer service” for you." textWrap="true"></Label>
+    </StackLayout>
+
+    <StackLayout row="1" style.margin="0 40" verticalAlignment="center">
+        <Label class="t t-20 t-center" text="Got a customer service problem?" textWrap="true"></Label>
+        <TextField class="" id="input1" hint="Which Company?" [text]="company"></TextField>
+        <Button class="button-large" text="Next" (tap)="tapNext()"></Button>
+    </StackLayout>
+
+    <StackLayout row="2" style.margin="0 40 20 40">
+        <Label class="t t-bold t-center" text="We can also lower your bills and wrangle customer service for all your companies"
+            textWrap="true"></Label>
+        <Button class="button-large" text="Manage Companies" (tap)="tapManageCompanies()"></Button>
+    </StackLayout>
+
+</GridLayout>
+
