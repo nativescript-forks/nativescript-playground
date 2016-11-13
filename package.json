@@ -17,15 +17,6 @@
 		}
 	},
 	"dependencies": {
-		"@angular/core": "latest",
-		"@angular/common": "latest",
-		"@angular/compiler": "latest",
-		"@angular/forms": "latest",
-		"@angular/http": "latest",
-		"@angular/platform-browser": "latest",
-		"@angular/platform-browser-dynamic": "latest",
-		"@angular/platform-server": "latest",
-		"@angular/router": "latest",
 		"ansicolors": "latest",
 		"ansistyles": "latest",
 		"eventemitter3": "latest",
