@@ -14,23 +14,17 @@ import { ad } from 'utils/utils'
 
 function onImageSourcePropertyChanged(args: PropertyChangeData) {
 	global.tnsconsole.log('onImageSourcePropertyChanged', args.newValue)
-	var image = <IImage>args.object
+	let image = <IImage>args.object
 	if (!image.android) {
 		return
 	}
-	if (args.newValue && args.newValue.toString().indexOf('~/') === 0) {
-		let oldUri = args.newValue
-		let newUri = path.join(knownFolders.currentApp().path, oldUri.replace('~/', ''))
-		image._setNativeImage(newUri)
-	} else {
-		image._setNativeImage(args.newValue)
-	}
+	image._setNativeImage(args.newValue)
 }
 (<PropertyMetadata>common.IImage.imageUriProperty.metadata).onSetNativeValue = onImageSourcePropertyChanged
 
 function onStretchPropertyChanged(args: PropertyChangeData) {
 	global.tnsconsole.warn('onStretchPropertyChanged', args.newValue)
-	var image = <IImage>args.object
+	let image = <IImage>args.object
 	if (!image.android) {
 		return
 	}
@@ -55,7 +49,6 @@ function onStretchPropertyChanged(args: PropertyChangeData) {
 export class IImage extends common.IImage {
 
 	public glide: com.bumptech.glide.DrawableTypeRequest
-	// private _android: org.nativescript.widgets.ImageView
 	private _android: android.widget.ImageView
 
 	constructor() {
@@ -68,17 +61,27 @@ export class IImage extends common.IImage {
 	}
 	public _createUI() {
 		global.tnsconsole.info('_createUI')
-		// this._android = new org.nativescript.widgets.ImageView(this._context)
 		this._android = new android.widget.ImageView(this._context)
+		// this._android.setMinimumWidth(1024)
+		// this._android.setMinimumHeight(1024)
 		// this._android.setLayoutParams()
 	}
 
 	public _setNativeImage(nativeImage: string) {
 		global.tnsconsole.log('_setNativeImage', nativeImage)
 
+		// global.tnsconsole.log('this.width', this.width)
+		// global.tnsconsole.log('this.height', this.height)
+		// global.tnsconsole.log('this.parent.getMeasuredWidth()', this.parent.getMeasuredWidth())
+		// global.tnsconsole.log('this.parent.getMeasuredHeight()', this.parent.getMeasuredHeight())
+		// global.tnsconsole.log('this.parent.parent.getMeasuredWidth()', this.parent.parent.getMeasuredWidth())
+		// global.tnsconsole.log('this.parent.parent.getMeasuredHeight()', this.parent.parent.getMeasuredHeight())
+		// global.tnsconsole.log('this.parent.parent.parent.getMeasuredWidth()', this.parent.parent.parent.getMeasuredWidth())
+		// global.tnsconsole.log('this.parent.parent.parent.getMeasuredHeight()', this.parent.parent.parent.getMeasuredHeight())
+
 		this.glide = com.bumptech.glide.Glide.with(this._context).load(nativeImage) //.asBitmap()
 
-		// this.glide.override(1024, 1024)
+		this.glide.override(1024, 1024)
 
 		this.glide.into(this._android)
 

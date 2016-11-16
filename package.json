@@ -13,7 +13,7 @@
 			"version": "2.5.0-next-2016-11-11-1390"
 		},
 		"tns-ios": {
-			"version": "2.5.0-2016-11-15-1"
+			"version": "2.5.0-2016-11-3-2"
 		}
 	},
 	"dependencies": {
@@ -21,7 +21,7 @@
 		"ansistyles": "latest",
 		"eventemitter3": "latest",
 		"nativescript-playground-plugin": "file:plugin",
-		"tns-core-modules": "next"
+		"tns-core-modules": "2.5.0-2016-11-11-4763"
 	},
 	"devDependencies": {
 		"tns-platform-declarations": "next",
