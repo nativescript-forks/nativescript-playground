@@ -63,14 +63,14 @@ export class IImage extends common.IImage {
 		global.tnsconsole.info('IImage > constructor')
 	}
 
-	get android(): org.nativescript.widgets.ImageView {
+	get android(): android.widget.ImageView {
 		return this._android
 	}
 	public _createUI() {
 		global.tnsconsole.info('_createUI')
 		// this._android = new org.nativescript.widgets.ImageView(this._context)
 		this._android = new android.widget.ImageView(this._context)
-		global.tnsconsole.log('this.getMeasuredWidth()', this.getMeasuredWidth())
+		// this._android.setLayoutParams()
 	}
 
 	public _setNativeImage(nativeImage: string) {
