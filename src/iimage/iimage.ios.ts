@@ -13,7 +13,6 @@ import { fromNativeSource, fromFile, fromResource } from 'image-source'
 
 
 function onImageSourcePropertyChanged(args: PropertyChangeData) {
-	global.tnsconsole.log('onImageSourcePropertyChanged', args.newValue)
 	let image = <IImage>args.object
 	if (!image.ios) {
 		return

@@ -13,7 +13,6 @@ import { ad } from 'utils/utils'
 
 
 function onImageSourcePropertyChanged(args: PropertyChangeData) {
-	global.tnsconsole.log('onImageSourcePropertyChanged', args.newValue)
 	let image = <IImage>args.object
 	if (!image.android) {
 		return
@@ -23,7 +22,6 @@ function onImageSourcePropertyChanged(args: PropertyChangeData) {
 (<PropertyMetadata>common.IImage.imageUriProperty.metadata).onSetNativeValue = onImageSourcePropertyChanged
 
 function onStretchPropertyChanged(args: PropertyChangeData) {
-	global.tnsconsole.warn('onStretchPropertyChanged', args.newValue)
 	let image = <IImage>args.object
 	if (!image.android) {
 		return
@@ -62,6 +60,7 @@ export class IImage extends common.IImage {
 	public _createUI() {
 		global.tnsconsole.info('_createUI')
 		this._android = new android.widget.ImageView(this._context)
+		this._android.setScaleType(android.widget.ImageView.ScaleType.FIT_XY)
 		// this._android.setMinimumWidth(1024)
 		// this._android.setMinimumHeight(1024)
 		// this._android.setLayoutParams()
