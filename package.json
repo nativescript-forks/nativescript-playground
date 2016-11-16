@@ -3,7 +3,7 @@
 		"init": "npm install && tns install && cd src && npm link typescript && npm link gulp && npm link gulp-typescript && npm install && gulp clean",
 		"src": "cd src && gulp",
 		"clean": "cd src && gulp clean",
-		"p": "tns livesync android --watch",
+		"a": "tns livesync android --watch",
 		"i": "tns livesync ios --watch",
 		"lodash": "lodash include=isEmpty,isUndefined,isNull,keysIn,functionsIn,difference,merge,debounce,throttle,pick,omit,isBoolean,isString,capitalize,remove,isFinite,intersectionBy"
 	},
