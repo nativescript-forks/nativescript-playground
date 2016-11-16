@@ -1,6 +1,6 @@
 <!--  -->
 
-<Page loaded="onLoaded">
+<Page loaded="onLoaded" xmlns:IImage="./iimage">
 
     <Page.actionBar>
         <ActionBar title="Playground">
@@ -8,14 +8,16 @@
         </ActionBar>
     </Page.actionBar>
 
-    <GridLayout rows="*">
+    <GridLayout rows="auto">
 
-        <DockLayout row="0">
-            <StackLayout dock="top">
-                <Button class="button-large" text="Do It" tap="{{ doit }}" />
-            </StackLayout>
-            <Placeholder class="dev" creatingView="onCreatingView" />
-        </DockLayout>
+        <StackLayout>
+            <Button class="button-large" text="Do It" tap="{{ doit }}" />
+            <IImage:IImage class="dev" imageUri="http://i.imgur.com/rFLNqWI.jpg" stretch="aspectFill" />
+            <!-- <IImage:IImage id="image" src="res://icon" loaded="onIImageLoaded" /> -->
+            <!-- <Placeholder class="dev" creatingView="onCreatingView" /> -->
+            <!-- <Image class="dev" src="http://www.google.com/images/errors/logo_sm_2.png" /> -->
+            <Image src="http://www.google.com/images/errors/logo_sm_2.png" />
+        </StackLayout>
 
     </GridLayout>
 

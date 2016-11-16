@@ -5,6 +5,11 @@ button {
     horizontal-align: center;
 }
 
+.dev {
+    border-color: red;
+    border-width: 2;
+}
+
 
 /**/
 
