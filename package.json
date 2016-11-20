@@ -5,15 +5,15 @@
 		"clean": "cd src && gulp clean",
 		"p": "tns livesync android --watch",
 		"i": "tns livesync ios --watch",
-		"lodash": "lodash include=isEmpty,isUndefined,isNull,keysIn,functionsIn,difference,merge,debounce,throttle,pick,omit,isBoolean,isString,capitalize,remove,isFinite,intersectionBy"
+		"lodash": "lodash include=isEmpty,isUndefined,isNull,keysIn,functionsIn,difference,merge,debounce,throttle,pick,omit,isBoolean,isString,capitalize,remove,isFinite,intersectionBy,uniq,compact"
 	},
 	"nativescript": {
 		"id": "com.roblav96.playground",
 		"tns-android": {
-			"version": "next"
+			"version": "2.4.0"
 		},
 		"tns-ios": {
-			"version": "next"
+			"version": "2.4.0"
 		}
 	},
 	"dependencies": {
@@ -21,10 +21,11 @@
 		"ansistyles": "latest",
 		"eventemitter3": "latest",
 		"nativescript-playground-plugin": "file:plugin",
-		"tns-core-modules": "next"
+		"tns-core-modules": "2.4.0"
 	},
 	"devDependencies": {
-		"tns-platform-declarations": "next",
+		"@types/lodash": "latest",
+		"tns-platform-declarations": "2.4.0",
 		"babel-traverse": "latest",
 		"babel-types": "latest",
 		"babylon": "latest",

@@ -1,0 +1,8 @@
+{
+	"folders": [{
+		"path": "./app",
+		"folder_exclude_patterns": ["App_Resources", "node_modules", "platforms", "lib", "hooks"],
+		"file_exclude_patterns": [".git*", "*.map", ".npmignore"]
+	}]
+}
+
