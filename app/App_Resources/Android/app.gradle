@@ -1,11 +1,12 @@
 // Add your native dependencies here:
 
-// dependencies {
-// 	compile 'com.google.code.gson:gson:2.6.2'
-// 	compile 'com.parse.bolts:bolts-tasks:1.4.0'
-// 	compile 'com.github.tamir7.contacts:contacts:1.1.1'
-// 	compile 'me.everything:providers-android:1.0.1'
-// }
+repositories {
+	jcenter()
+}
+
+dependencies {
+	compile 'com.getkeepsafe.taptargetview:taptargetview:1.5.2'
+}
 
 android {
 	defaultConfig {
@@ -15,7 +16,7 @@ android {
 	aaptOptions {
 		additionalParameters "--no-version-vectors"
 	}
-	
-	
+
+
 }
 
