@@ -4,6 +4,7 @@
 
     <Page.actionBar>
         <ActionBar title="Playground">
+
         </ActionBar>
     </Page.actionBar>
 
@@ -11,7 +12,8 @@
 
         <DockLayout row="0">
             <StackLayout dock="top">
-                <Button class="button-large" text="Do It" tap="{{ doit }}" />
+                <Button id="do_it" class="button-large" text="Do It" tap="doit" />
+                <Label id="label_it" class="t" text="Label It" />
             </StackLayout>
         </DockLayout>
 

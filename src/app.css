@@ -2,7 +2,11 @@
 
 button {
     font-size: 30;
-    horizontal-align: center;
+}
+
+.t {
+	font-size: 30;
+	text-align: center;
 }
 
 

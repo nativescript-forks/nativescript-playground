@@ -20,6 +20,7 @@
 		"ansicolors": "latest",
 		"ansistyles": "latest",
 		"eventemitter3": "latest",
+		"nativescript-coachmarks": "latest",
 		"nativescript-playground-plugin": "file:plugin",
 		"tns-core-modules": "2.4.0"
 	},
@@ -33,4 +34,3 @@
 		"zone.js": "latest"
 	}
 }
-
