@@ -1,3 +1,4 @@
 # 
 
 pod 'YYWebImage'
+pod 'MPCoachMarks', :git => 'https://github.com/bubudrc/MPCoachMarks.git'
