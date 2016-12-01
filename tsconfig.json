@@ -3,9 +3,9 @@
 		"module": "commonjs",
 		"target": "es5",
 		"lib": ["es2016"],
+		"outDir": "temp",
 		"skipLibCheck": true,
 		"skipDefaultLibCheck": true,
-		"outDir": "temp",
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
 		"removeComments": true,
@@ -13,13 +13,16 @@
 		"pretty": true
 	},
 	"include": [
-		"node_modules/tns-core-modules/tns-core-modules.es2016.d.ts",
-		"node_modules/tns-platform-declarations/android.d.ts",
-		"node_modules/tns-platform-declarations/ios.d.ts",
+		"references.d.ts",
 		"typings/**/*.ts",
 		"src/**/*.ts"
 	],
 	"exclude": [
+		"app",
+		"lib",
+		"platforms",
+		"plugin",
+		"node_modules",
 		"src/node_modules"
 	]
 }
