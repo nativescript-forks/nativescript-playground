@@ -1,6 +1,3 @@
-*.DS_STORE
-*.log
-*.keystore
 /app/**/*
 !/app/fonts
 !/app/fonts/**/*
@@ -15,3 +12,7 @@
 /typingz-x86_64
 
 /src/node_modules
+
+*.DS_STORE
+*.log
+*.keystore
