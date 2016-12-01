@@ -1,39 +1,32 @@
 {
 	"folders": [{
-		"path": "./",
-		"file_exclude_patterns": [
-			"app/*.json",
-			"app/App_Resources/**/*.png",
-			".git*",
-			"*.map",
-			".npmignore",
-			"*.sublime-project"
-		],
-		"file_include_patterns": [
-			"*.d.ts",
-			"*.json",
-			"*gulpfile*",
-			"app/App_Resources/**/*",
-			"plugin/**/*",
-			"src",
-			"src/*",
-		],
+		"path": ".",
 		"folder_exclude_patterns": [
-			"app/App_Resources/Android/*",
-			"app/App_Resources/iOS/*",
-			"src/typings/vendor",
 			"src/node_modules",
+		],
+		"file_exclude_patterns": [
+			"*.git*",
+			"*.sublime*",
+			"src/*.min.js",
+			"src/*.json",
+			"app/*.css",
+			"app/*/.xml",
+			"app/*.js",
+			"app/*.json",
+			"app/*.png",
+			"plugin/*.js",
+			"plugin/*.json",
+			"plugin/*.jar",
 		],
 		"folder_include_patterns": [
 			"app",
 			"app/App_Resources",
+			"plugin/platforms",
+			"plugin",
+			"typings",
 			"src",
 			"src/*",
-			"plugin",
-			"plugin/*",
-			"typings",
-			"typings/native",
-		]
+		],
 	}]
 }
 
