@@ -1,7 +1,11 @@
 {
 	"devDependencies": {
 		"del": "latest",
-		"merge2": "latest"
+		"gulp-debug": "latest",
+		"gulp-util": "latest",
+		"gulp-cached": "latest",
+		"gulp-watch": "latest",
+		"gulp-uglify": "latest"
 	}
 }
 
