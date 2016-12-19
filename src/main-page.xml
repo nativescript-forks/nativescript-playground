@@ -1,6 +1,6 @@
 <!--  -->
 
-<Page loaded="onLoaded">
+<Page loaded="onLoaded" unloaded="onUnloaded">
 
     <Page.actionBar>
         <ActionBar title="Playground">
@@ -11,7 +11,8 @@
 
         <DockLayout row="0">
             <StackLayout dock="top">
-                <Button class="button-large" text="Do It" tap="{{ doit }}" />
+                <Button class="button-large" text="Build It" tap="{{ doit }}" />
+                <Button class="button-large" text="Toggle It" tap="{{ toggleit }}" />
             </StackLayout>
         </DockLayout>
 

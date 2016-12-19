@@ -20,11 +20,11 @@
 		"ansi-styles": "latest",
 		"eventemitter3": "latest",
 		"nativescript-playground-plugin": "file:plugin",
-		"tns-core-modules": "2.4.0"
+		"tns-core-modules": "latest"
 	},
 	"devDependencies": {
 		"@types/lodash": "latest",
-		"tns-platform-declarations": "2.4.0",
+		"tns-platform-declarations": "latest",
 		"babel-traverse": "latest",
 		"babel-types": "latest",
 		"babylon": "latest",
