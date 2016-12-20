@@ -37,7 +37,7 @@ class TnsSideDrawerClass extends TnsSideDrawerCommonClass {
 		if (super.build(opts)) {
 			return
 		}
-		this.logoImage = (this.logoImage) ? this.logoImage : TnsSideDrawerClass.getAppIcon()
+		this.logoImage = (isDefined(opts.logoImage)) ? opts.logoImage : TnsSideDrawerClass.getAppIcon()
 
 		let width = screen.mainScreen.widthDIPs
 		let height = screen.mainScreen.heightDIPs
@@ -102,11 +102,13 @@ class TnsSideDrawerClass extends TnsSideDrawerCommonClass {
 				let stack = new StackLayout()
 				stack.orientation = 'horizontal'
 				stack.margin = '5 0'
-				let icon = new Image()
-				icon.src = fromResource(template.iosIcon)
-				icon.width = 32
-				icon.marginLeft = 5
-				stack.addChild(icon)
+				if (template.iosIcon) {
+					let icon = new Image()
+					icon.src = fromResource(template.iosIcon)
+					icon.width = 32
+					icon.marginLeft = 5
+					stack.addChild(icon)
+				}
 				let title = new Label()
 				title.text = template.title
 				title.marginLeft = 15
@@ -118,11 +120,11 @@ class TnsSideDrawerClass extends TnsSideDrawerCommonClass {
 			}
 		})
 		listview.on(ListView.itemTapEvent, (args: ItemEventData) => {
-			let template = this.templates[args.index]
-			if (isDefined(template.fn.context)) {
-				template.fn.method.apply(template.fn.context)
+			let index = args.index
+			if (isDefined(this.context)) {
+				this.listener.apply(this.context, [index])
 			} else {
-				template.fn.method()
+				this.listener(index)
 			}
 			this.toggle(false)
 		})

@@ -10,9 +10,7 @@ import { TnsSideDrawer } from './drawer'
 
 export function onLoaded(args: EventData) {
 	let page: Page = <Page>args.object
-	page.bindingContext = new MainPage(
-
-	)
+	page.bindingContext = new MainPage()
 	TnsSideDrawer.addGesture(page)
 }
 
@@ -23,36 +21,51 @@ export function onUnloaded(args: EventData) {
 
 class MainPage extends Observable {
 
-	constructor(
-
-	) {
-		super()
-		this.doit()
+	private _i: number = 0
+	get i(): number {
+		return this._i
+	}
+	set i(i: number) {
+		this._i = i
+		this.notifyPropertyChange('i', i)
 	}
 
-	doit() {
+	constructor() {
+		super()
+
 		TnsSideDrawer.build({
 			templates: [{
-				title: 'title1',
-				androidIcon: 'icon',
+				title: 'Home',
+				androidIcon: 'ic_home_white_24dp',
 				iosIcon: 'ic_home_white',
-				fn: {
-					method: this.testit,
-					context: this,
-				},
+			}, {
+				title: 'Judgment Day',
+				androidIcon: 'ic_gavel_white_24dp',
+				iosIcon: 'ic_home_white',
+			}, {
+				title: 'Bank Roll',
+				androidIcon: 'ic_account_balance_white_24dp',
+				iosIcon: 'ic_home_white',
+			}, {
+				title: 'Fix Stuff',
+				androidIcon: 'ic_build_white_24dp',
+				iosIcon: 'ic_home_white',
+			}, {
+				title: 'This Is Me',
+				androidIcon: 'ic_account_circle_white_24dp',
+				iosIcon: 'ic_home_white',
 			}],
-			// title: 'My App',
-			// subtitle: 'is awesome!',
+			title: 'This App Name',
+			subtitle: 'is just as awesome as this subtitle!',
+			listener: (index) => {
+				this.i = index
+			},
+			context: this,
 		})
 	}
 
 	toggleit() {
-		console.log('TOGGLEIT :D')
 		TnsSideDrawer.toggle()
-	}
-
-	testit() {
-		console.log('TESTIT :D')
 	}
 
 }

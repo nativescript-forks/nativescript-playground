@@ -1,21 +1,25 @@
-// Add your native dependencies here:
+// 
 
-// dependencies {
-// 	compile 'com.google.code.gson:gson:2.6.2'
-// 	compile 'com.parse.bolts:bolts-tasks:1.4.0'
-// 	compile 'com.github.tamir7.contacts:contacts:1.1.1'
-// 	compile 'me.everything:providers-android:1.0.1'
-// }
+repositories {
+	jcenter()
+	maven {
+		url 'https://jitpack.io'
+	}
+}
+
+dependencies {
+	compile('com.mikepenz:materialdrawer:+@aar') {
+		transitive = true
+	}
+}
 
 android {
 	defaultConfig {
 		generatedDensities = []
-		applicationId = "com.roblav96.playground"
+		applicationId = 'com.roblav96.playground'
 	}
 	aaptOptions {
-		additionalParameters "--no-version-vectors"
+		additionalParameters '--no-version-vectors'
 	}
-	
-	
 }
 

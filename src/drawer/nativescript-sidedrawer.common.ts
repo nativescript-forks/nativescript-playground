@@ -8,14 +8,11 @@ import { isDefined } from 'utils/types'
 
 export interface TnsSideDrawerItem {
 	title: string
-	androidIcon: string
-	iosIcon: string
-	fn: {
-		method: Function,
-		context?: any
-	}
+	androidIcon?: string
+	iosIcon?: string
 }
 
+type TnsSideDrawerOptionsListener = (index: number) => void
 export interface TnsSideDrawerOptions {
 	templates: Array<TnsSideDrawerItem>
 	textColor?: Color
@@ -24,6 +21,8 @@ export interface TnsSideDrawerOptions {
 	logoImage?: ImageSource
 	title?: string
 	subtitle?: string
+	listener: TnsSideDrawerOptionsListener
+	context?: any
 }
 
 export class TnsSideDrawerCommonClass {
@@ -36,6 +35,8 @@ export class TnsSideDrawerCommonClass {
 	protected logoImage: ImageSource
 	protected title: string
 	protected subtitle: string
+	protected listener: TnsSideDrawerOptionsListener
+	protected context: any
 
 	build(opts: TnsSideDrawerOptions): boolean {
 		if (TnsSideDrawerCommonClass.isBuilt == true) {
@@ -43,7 +44,13 @@ export class TnsSideDrawerCommonClass {
 			return true
 		}
 		TnsSideDrawerCommonClass.isBuilt = true
+
 		this.templates = opts.templates
+		this.listener = opts.listener
+		if (isDefined(opts.context)) {
+			this.context = opts.context
+		}
+
 		if (isDefined(opts.textColor)) {
 			this.textColor = opts.textColor
 		}
@@ -59,6 +66,7 @@ export class TnsSideDrawerCommonClass {
 		if (isDefined(opts.subtitle)) {
 			this.subtitle = opts.subtitle
 		}
+
 		return false
 	}
 
