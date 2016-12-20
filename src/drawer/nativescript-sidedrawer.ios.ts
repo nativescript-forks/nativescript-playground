@@ -14,9 +14,10 @@ import { View } from 'ui/core/view'
 import { Image } from 'ui/image'
 import { fromResource, ImageSource, fromNativeSource } from 'image-source'
 import { Animation, AnimationDefinition } from 'ui/animation'
-import { AnimationCurve } from 'ui/enums'
+import { AnimationCurve, Dock } from 'ui/enums'
 import { ios as uiUtils } from 'ui/utils'
 import { AbsoluteLayout } from 'ui/layouts/absolute-layout'
+import { DockLayout } from 'ui/layouts/dock-layout'
 import { StackLayout } from 'ui/layouts/stack-layout'
 import { isDefined } from 'utils/types'
 import { TnsSideDrawerItem, TnsSideDrawerOptions, TnsSideDrawerCommonClass } from './nativescript-sidedrawer.common'
@@ -30,7 +31,7 @@ class TnsSideDrawerClass extends TnsSideDrawerCommonClass {
 	private origin = 0
 	private isOpen = false
 	private backdrop: AbsoluteLayout
-	private stack: StackLayout
+	private stack: DockLayout
 
 	build(opts: TnsSideDrawerOptions): any {
 		if (super.build(opts)) {
@@ -52,14 +53,12 @@ class TnsSideDrawerClass extends TnsSideDrawerCommonClass {
 			}
 		})
 
-		this.stack = new StackLayout()
+		this.stack = new DockLayout()
 		this.stack.backgroundColor = this.headerBackgroundColor
 		this.stack.translateX = -this.width
 		this.stack.opacity = 0
 
 		let topstack = new StackLayout()
-		topstack.backgroundColor = this.backgroundColor
-		topstack.marginBottom = 5
 		let image = new Image()
 		image.src = this.logoImage
 		let statusHeight = uiUtils.getStatusBarHeight()
@@ -84,56 +83,50 @@ class TnsSideDrawerClass extends TnsSideDrawerCommonClass {
 			subtitle.margin = '0 0 10 10'
 			topstack.addChild(subtitle)
 		}
+		DockLayout.setDock(topstack, Dock.top)
 		this.stack.addChild(topstack)
 
-		let i: number, len: number = this.templates.length
-		for (i = 0; i < len; i++) {
-			let template = this.templates[i]
-			this.stack.addChild(this.createItem(i))
-		}
-
 		let listview = new ListView()
+		listview.backgroundColor = this.backgroundColor
+		let uitable: UITableView = listview.ios
+		uitable.separatorStyle = UITableViewCellSeparatorStyle.None
+		uitable.alwaysBounceVertical = false
 		listview.items = this.templates
+		listview.onLoaded()
 		listview.on(ListView.itemLoadingEvent, (args: ItemEventData) => {
 			if (!args.view) {
+				let cell: UITableViewCell = args.ios
+				cell.selectionStyle = UITableViewCellSelectionStyle.Gray
+				cell.backgroundColor = this.backgroundColor.ios
 				let template = this.templates[args.index]
 				let stack = new StackLayout()
 				stack.orientation = 'horizontal'
-				// let icon = new Label()
-				// icon.text = String.fromCharCode(template.iosIcon)
-				// icon.style.fontFamily = "'Ionicons'"
-				// icon.style.textAlignment = 'center'
-				// icon.color = this.textColor
-				// icon.fontSize = 20
+				stack.margin = '5 0'
 				let icon = new Image()
 				icon.src = fromResource(template.iosIcon)
-				icon.width = 25
+				icon.width = 32
 				icon.marginLeft = 5
-				icon.marginRight = 5
 				stack.addChild(icon)
-				let button = new Label()
-				button.text = template.title
-				button.style.textAlignment = 'left'
-				button.style.fontSize = 15
-				// button.width = this.width - 35
-				button.color = this.textColor
-				button.margin = '5 0 5 5'
-				// button.id = i.toString()
-				// button.onLoaded()
-				// button.on(<any>GestureTypes.tap, (args: EventData) => {
-				// 	let index = parseInt((<View>args.object).id)
-				// 	let temp = this.templates[index]
-				// 	if (isDefined(temp.fn.context)) {
-				// 		temp.fn.method.apply(temp.fn.context)
-				// 	} else {
-				// 		temp.fn.method()
-				// 	}
-				// 	this.toggle(false)
-				// })
-				stack.addChild(button)
+				let title = new Label()
+				title.text = template.title
+				title.marginLeft = 15
+				title.style.textAlignment = 'left'
+				title.style.fontSize = 16
+				title.color = this.textColor
+				stack.addChild(title)
 				args.view = stack
 			}
 		})
+		listview.on(ListView.itemTapEvent, (args: ItemEventData) => {
+			let template = this.templates[args.index]
+			if (isDefined(template.fn.context)) {
+				template.fn.method.apply(template.fn.context)
+			} else {
+				template.fn.method()
+			}
+			this.toggle(false)
+		})
+
 		this.stack.addChild(listview)
 
 		this.stack.eachLayoutChild(function(view) {
@@ -167,45 +160,6 @@ class TnsSideDrawerClass extends TnsSideDrawerCommonClass {
 
 		let page = topmost().currentPage
 		this.addGesture(page)
-	}
-
-	private createItem(i: number): StackLayout {
-		let template = this.templates[i]
-		let stack = new StackLayout()
-		stack.orientation = 'horizontal'
-		// let icon = new Label()
-		// icon.text = String.fromCharCode(template.iosIcon)
-		// icon.style.fontFamily = "'Ionicons'"
-		// icon.style.textAlignment = 'center'
-		// icon.color = this.textColor
-		// icon.fontSize = 20
-		let icon = new Image()
-		icon.src = fromResource(template.iosIcon)
-		icon.width = 25
-		icon.marginLeft = 5
-		icon.marginRight = 5
-		stack.addChild(icon)
-		let button = new Button()
-		button.text = template.title
-		button.style.textAlignment = 'left'
-		button.style.fontSize = 15
-		button.width = this.width - 35
-		button.color = this.textColor
-		button.margin = '5 0 5 5'
-		button.id = i.toString()
-		button.onLoaded()
-		button.on(<any>GestureTypes.tap, (args: EventData) => {
-			let index = parseInt((<View>args.object).id)
-			let temp = this.templates[index]
-			if (isDefined(temp.fn.context)) {
-				temp.fn.method.apply(temp.fn.context)
-			} else {
-				temp.fn.method()
-			}
-			this.toggle(false)
-		})
-		stack.addChild(button)
-		return stack
 	}
 
 	toggle(force?: boolean, duration: number = this.width) {
@@ -268,16 +222,16 @@ class TnsSideDrawerClass extends TnsSideDrawerCommonClass {
 			if (TnsSideDrawerClass.ignorePan == true) {
 				return
 			}
-			let x = TnsSideDrawerClass.math_clamp(-250 + args.deltaX, -250, 0)
+			let x = TnsSideDrawerClass.math_clamp(-this.width + args.deltaX, -this.width, 0)
 			this.stack.translateX = x
 			if (args.state == GestureStateTypes.ended) {
 				if (x > -200) {
-					this.toggle(true, x + 250)
+					this.toggle(true, x + this.width)
 				} else {
 					this.stack.animate({
 						curve: AnimationCurve.easeOut,
-						translate: { x: -250, y: 0 },
-						duration: x + 250,
+						translate: { x: -this.width, y: 0 },
+						duration: x + this.width,
 					})
 				}
 			}

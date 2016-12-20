@@ -35,7 +35,7 @@ class MainPage extends Observable {
 			templates: [{
 				title: 'title1',
 				androidIcon: 'icon',
-				iosIcon: 'ic_home',
+				iosIcon: 'ic_home_white',
 				fn: {
 					method: this.testit,
 					context: this,
