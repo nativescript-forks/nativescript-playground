@@ -41,9 +41,8 @@ class MainPage extends Observable {
 					context: this,
 				},
 			}],
-			title: 'My App',
-			subtitle: 'is awesome!',
-			// textColor: new Color('red')
+			// title: 'My App',
+			// subtitle: 'is awesome!',
 		})
 	}
 

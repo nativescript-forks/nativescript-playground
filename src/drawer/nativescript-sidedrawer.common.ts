@@ -22,7 +22,7 @@ export interface TnsSideDrawerOptions {
 	headerBackgroundColor?: Color
 	backgroundColor?: Color
 	logoImage?: ImageSource
-	title: string
+	title?: string
 	subtitle?: string
 }
 
@@ -53,7 +53,9 @@ export class TnsSideDrawerCommonClass {
 		if (isDefined(opts.backgroundColor)) {
 			this.backgroundColor = opts.backgroundColor
 		}
-		this.title = opts.title
+		if (isDefined(opts.title)) {
+			this.title = opts.title
+		}
 		if (isDefined(opts.subtitle)) {
 			this.subtitle = opts.subtitle
 		}
