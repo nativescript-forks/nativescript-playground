@@ -5,6 +5,7 @@
 			"src/node_modules",
 		],
 		"file_exclude_patterns": [
+			"*.log",
 			"*.git*",
 			"*.sublime*",
 			"src/*.min.js",
