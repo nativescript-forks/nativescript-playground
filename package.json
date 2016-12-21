@@ -18,17 +18,25 @@
 	},
 	"dependencies": {
 		"ansi-styles": "latest",
+		"eyes": "latest",
 		"eventemitter3": "latest",
 		"nativescript-playground-plugin": "file:plugin",
-		"tns-core-modules": "2.4.0"
+		"tns-core-modules": "latest",
+		"vue-class-component": "latest",
+		"vue-server-renderer": "latest",
+		"vue-template-compiler": "latest",
+		"weex-template-compiler": "latest",
+		"weex-vue-framework": "latest",
+		"vue": "latest"
 	},
 	"devDependencies": {
+		"@types/eyes": "latest",
+		"@types/ansi-styles": "latest",
 		"@types/lodash": "latest",
-		"tns-platform-declarations": "2.4.0",
+		"tns-platform-declarations": "latest",
 		"babel-traverse": "latest",
 		"babel-types": "latest",
 		"babylon": "latest",
-		"lazy": "latest",
-		"zone.js": "latest"
+		"lazy": "latest"
 	}
 }
