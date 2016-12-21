@@ -3,8 +3,7 @@
 <Page loaded="onLoaded">
 
     <Page.actionBar>
-        <ActionBar title="Playground">
-        </ActionBar>
+        <ActionBar title="Onboarding Playground"></ActionBar>
     </Page.actionBar>
 
     <GridLayout rows="*">
